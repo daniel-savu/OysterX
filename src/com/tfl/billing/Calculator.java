@@ -48,5 +48,5 @@ public class Calculator {
         }
 
         return journeyPrice;
-    } //TODO: modifica pt flexibilitate
+    }
 }

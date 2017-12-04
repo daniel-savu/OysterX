@@ -2,7 +2,6 @@ package com.tfl.billing;
 
 import com.oyster.OysterCardReader;
 import com.oyster.ScanListener;
-import com.tfl.external.Customer;
 
 import com.tfl.external.PaymentsSystem;
 
@@ -14,7 +13,7 @@ public class TravelTracker implements ScanListener {
     static final BigDecimal OFF_PEAK_JOURNEY_PRICE = new BigDecimal(2.40);
     static final BigDecimal PEAK_JOURNEY_PRICE = new BigDecimal(3.20);
 
-    final List<JourneyEvent> eventLog = new ArrayList<JourneyEvent>();
+    static final List<JourneyEvent> eventLog = new ArrayList<JourneyEvent>();
     private final Set<UUID> currentlyTravelling = new HashSet<UUID>();
 
 
@@ -51,7 +50,7 @@ public class TravelTracker implements ScanListener {
     }
 
     private void manageJourneyStart(UUID cardId, UUID readerId) {
-        if (isCardIdRegistered(cardId)) {
+        if (DatabaseController.isCardIdRegistered(cardId)) {
             currentlyTravelling.add(cardId);
             eventLog.add(new JourneyStart(cardId, readerId));
         } else {

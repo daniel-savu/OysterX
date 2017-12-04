@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PaymentHandler {
     public void chargeAccounts() {
-        List<Customer> customers = getCustomers();
+        List<Customer> customers = DatabaseController.getCustomers();
         for (Customer customer : customers) {
             makePayment(customer);
         }
@@ -25,7 +25,7 @@ public class PaymentHandler {
 
     List<JourneyEvent> collectCustomerJourneyEvents(Customer customer) {
         List<JourneyEvent> customerJourneyEvents = new ArrayList<JourneyEvent>();
-        for (JourneyEvent journeyEvent : eventLog) {
+        for (JourneyEvent journeyEvent : TravelTracker.eventLog) {
             if (journeyEvent.cardId().equals(customer.cardId())) {
                 customerJourneyEvents.add(journeyEvent);
             }

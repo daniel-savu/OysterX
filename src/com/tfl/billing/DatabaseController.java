@@ -8,12 +8,12 @@ import java.util.UUID;
 
 public class DatabaseController {
 
-    public List<Customer> getCustomers() {
+    public static List<Customer> getCustomers() {
         CustomerDatabase customerDatabase = CustomerDatabase.getInstance();
         return customerDatabase.getCustomers();
     }
 
-    public boolean isCardIdRegistered(UUID cardId) {
+    public static boolean isCardIdRegistered(UUID cardId) {
         return CustomerDatabase.getInstance().isRegisteredId(cardId);
     }
 

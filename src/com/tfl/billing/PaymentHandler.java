@@ -19,7 +19,7 @@ public class PaymentHandler {
     void makePayment (Customer customer) {
         List<JourneyEvent> customerJourneyEvents = collectCustomerJourneyEvents(customer);
         List<Journey> journeys = transformJourneyEventsToJourneys(customerJourneyEvents);
-        BigDecimal customerTotal = calculateDailyCustomerPayment(journeys);
+        BigDecimal customerTotal = getCustomerTotal(journeys);
         manageTransaction(customer,journeys, customerTotal);
     }
 
@@ -49,21 +49,17 @@ public class PaymentHandler {
         return journeys;
     }
 
-
-
-    {
-
-        BigDecimal customerTotal = new BigDecimal(0);
+    private BigDecimal getCustomerTotal(List<Journey> journeys) {
+        BigDecimal customerTotal = null;
+        BigDecimal priceOfJourney;
         for (Journey journey : journeys) {
-            BigDecimal journeyPrice = OFF_PEAK_JOURNEY_PRICE;
-            if (peak(journey)) {
-                journeyPrice = PEAK_JOURNEY_PRICE;
-            }
-            customerTotal = customerTotal.add(journeyPrice);
+            Calculator calculator = new Calculator();
+            priceOfJourney = calculator.calculatePriceOfJourney(journey);
+            customerTotal.add(priceOfJourney);
         }
-
         return customerTotal;
     }
+
 
     private void manageTransaction (Customer customer, List<Journey> journeys, BigDecimal customerTotal) {
         PaymentsSystem.getInstance().charge(customer, journeys, roundToNearestPenny(customerTotal));

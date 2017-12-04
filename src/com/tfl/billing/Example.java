@@ -26,7 +26,9 @@ public class Example {
         //minutesPass(10);
         kingsCrossReader.touch(myCard);
 
-        travelTracker.chargeAccounts();
+        PaymentHandler paymentHandler = new PaymentHandler();
+        paymentHandler.chargeAccounts();
+
     }
 
     private static void minutesPass(int n) throws InterruptedException {

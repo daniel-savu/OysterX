@@ -50,12 +50,18 @@ public class PaymentHandler {
     }
 
     private BigDecimal getCustomerTotal(List<Journey> journeys) {
-        BigDecimal customerTotal = null;
-        BigDecimal priceOfJourney;
+        BigDecimal customerTotal = new BigDecimal(0);
+        BigDecimal priceOfJourney = null;
         for (Journey journey : journeys) {
+            //System.out.println(journey.endTime());
             Calculator calculator = new Calculator();
             priceOfJourney = calculator.calculatePriceOfJourney(journey);
-            customerTotal.add(priceOfJourney);
+            try{
+                customerTotal = customerTotal.add(priceOfJourney);
+            } catch(Exception e) {
+                System.out.println(e.getMessage());
+            }
+
         }
         return customerTotal;
     }

@@ -5,14 +5,14 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Calculator {
-    private static final BigDecimal PEAK_LONG_JOURNEY_PRICE = new BigDecimal(2.40);
-    private static final BigDecimal PEAK_SHORT_JOURNEY_PRICE = new BigDecimal(3.20);
+    private static final BigDecimal PEAK_LONG_JOURNEY_PRICE = new BigDecimal(3.80);
+    private static final BigDecimal PEAK_SHORT_JOURNEY_PRICE = new BigDecimal(2.90);
     private static final BigDecimal OFF_PEAK_LONG_JOURNEY_PRICE = new BigDecimal(2.70);
     private static final BigDecimal OFF_PEAK_SHORT_JOURNEY_PRICE = new BigDecimal(1.60);
 
     public boolean isPeak(Journey journey) {
         return peak(journey.startTime()) || peak(journey.endTime());
-    } //returnezi true daca calatoria a inceput la un moment care era peak, sau daca s-a terminat la un moment care era peak
+    }
 
     public boolean peak(Date time) {
         Calendar calendar = Calendar.getInstance();
@@ -34,13 +34,12 @@ public class Calculator {
                 journeyPrice = PEAK_LONG_JOURNEY_PRICE;
             else
                 journeyPrice = PEAK_SHORT_JOURNEY_PRICE;
-        }else {
+        } else {
             if(isLong(journey))
                 journeyPrice = OFF_PEAK_LONG_JOURNEY_PRICE;
             else
                 journeyPrice = OFF_PEAK_SHORT_JOURNEY_PRICE;
         }
-
         return journeyPrice;
     }
 }

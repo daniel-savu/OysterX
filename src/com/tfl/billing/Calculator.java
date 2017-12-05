@@ -13,23 +13,58 @@ public class Calculator {
 
     public boolean journeyIsPeakTime(Journey journey) {
 
-        return peak(journey.startTime()) || peak(journey.endTime());
+        return isPeak(journey.startTime()) || isPeak(journey.endTime()) || isPeak(journey.startTime(), journey.endTime());
     }
 
-    public boolean peak(Date time) {
+    public boolean isPeak(Date time) {
         int hour = getCurrentHour(time);
-        if (morningPeak(hour)) return true;
-        if (eveningPeak(hour)) return true;
+        if (isMorningPeak(hour)) {
+            return true;
+        }
+        if (isEveningPeak(hour)) {
+            return true;
+        }
         return false;
     }
 
-    private boolean eveningPeak(int hour) {
-        if (hour >= 17) if (hour < 20) return true;
+    public boolean isPeak(Date timeStart, Date timeEnd) {
+        int hourStart = getCurrentHour(timeStart);
+        int hourEnd = getCurrentHour(timeEnd);
+
+        if (containsMorningPeak(hourStart, hourEnd)) {
+            return true;
+        }
+        if (containsEveningPeak(hourStart, hourEnd)) {
+            return true;
+        }
         return false;
     }
 
-    private boolean morningPeak(int hour) {
-        if (hour >= 6) if (hour < 10) return true;
+    private boolean isEveningPeak(int hour) {
+        if (hour >= 17 && hour < 20) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isMorningPeak(int hour) {
+        if (hour >= 6 && hour < 10) {
+                return true;
+        }
+        return false;
+    }
+
+    private boolean containsEveningPeak(int hourStart, int hourEnd) {
+        if (hourStart <= 17 && hourEnd >= 20) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean containsMorningPeak(int hourStart, int hourEnd) {
+        if (hourStart <= 6 && hourEnd >= 10) {
+            return true;
+        }
         return false;
     }
 
@@ -40,24 +75,35 @@ public class Calculator {
     }
 
     private boolean isLong(Journey journey){
-        if(journey.durationSeconds() > LONG_JOURNEY_DURATION_IN_MINUTES*60)
+        if(journey.durationSeconds() > LONG_JOURNEY_DURATION_IN_MINUTES*60) {
             return true;
+        }
         return false;
     }
 
-    public BigDecimal calculatePriceOfJourney(Journey journey){
+    public BigDecimal calculatePriceOfJourney(Journey journey) {
         BigDecimal journeyPrice;
         if(journeyIsPeakTime(journey)){
-            if(isLong(journey))
-                journeyPrice = PEAK_LONG_JOURNEY_PRICE;
-            else
-                journeyPrice = PEAK_SHORT_JOURNEY_PRICE;
+            journeyPrice = getShortLongPeakFare(journey);
         } else {
-            if(isLong(journey))
-                journeyPrice = OFF_PEAK_LONG_JOURNEY_PRICE;
-            else
-                journeyPrice = OFF_PEAK_SHORT_JOURNEY_PRICE;
+            journeyPrice = getShortLongOffPeakFare(journey);
         }
         return journeyPrice;
+    }
+
+    private BigDecimal getShortLongPeakFare(Journey journey) {
+        if(isLong(journey)) {
+            return PEAK_LONG_JOURNEY_PRICE;
+        } else {
+            return PEAK_SHORT_JOURNEY_PRICE;
+        }
+    }
+
+    private BigDecimal getShortLongOffPeakFare(Journey journey) {
+        if(isLong(journey)) {
+            return OFF_PEAK_LONG_JOURNEY_PRICE;
+        } else {
+            return OFF_PEAK_SHORT_JOURNEY_PRICE;
+        }
     }
 }

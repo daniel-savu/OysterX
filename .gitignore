@@ -6,6 +6,3 @@ out/
 
 #Log file
 *.log
-
-#Jmock library
-jmock-2.6.0/

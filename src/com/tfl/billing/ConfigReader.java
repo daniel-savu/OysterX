@@ -4,11 +4,10 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class ConfigReader {
-    private final String csvFile = "CalculatorConfig.csv";
+    private final String csvFile = "Config.csv";
     private HashMap<String,String> rawConstants = new HashMap<>();
 
     public ConfigReader() {
@@ -19,11 +18,11 @@ public class ConfigReader {
         FileReader fileReader = openConfigFile();
         BufferedReader br = new BufferedReader(fileReader);
         String cvsSeparator = ",";
-        String csvLine;
+        String csvRow;
         try {
-            while ((csvLine = br.readLine()) != null) {
-                String[] configLine = csvLine.split(cvsSeparator);
-                addRowValuesToRawConstants(configLine);
+            while ((csvRow = br.readLine()) != null) {
+                String[] configLine = csvRow.split(cvsSeparator);
+                putRowValuesInHashMap(configLine);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,7 +39,7 @@ public class ConfigReader {
         }
     }
 
-    void addRowValuesToRawConstants(String[] configLine) {
+    void putRowValuesInHashMap(String[] configLine) {
         String constantName = configLine[0].trim().replaceAll("\uFEFF", "");
         String constantValue = configLine[1].trim().replaceAll("\uFEFF", "");
         rawConstants.put(constantName, constantValue);

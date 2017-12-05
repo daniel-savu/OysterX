@@ -11,7 +11,7 @@ import java.util.List;
 public class PaymentHandler {
 
     public static final List<Customer> customers = DatabaseController.getCustomers();
-    ConfigParser configParser = new ConfigParser();
+    Config config = new Config();
     Calculator calculator = new Calculator();
 
 
@@ -84,15 +84,15 @@ public class PaymentHandler {
     }
 
     private BigDecimal applyPeakCapIfNeeded(BigDecimal customerTotal) {
-        if (BigDecimalCompare.greaterThan(customerTotal, configParser.getPeakCap())) {
-            customerTotal = configParser.getPeakCap();
+        if (BigDecimalCompare.greaterThan(customerTotal, config.getPeakCap())) {
+            customerTotal = config.getPeakCap();
         }
         return customerTotal;
     }
 
     private BigDecimal applyOffPeakCapIfNeeded(BigDecimal customerTotal) {
-        if (BigDecimalCompare.greaterThan(customerTotal, configParser.getOffPeakCap())) {
-            customerTotal = configParser.getOffPeakCap();
+        if (BigDecimalCompare.greaterThan(customerTotal, config.getOffPeakCap())) {
+            customerTotal = config.getOffPeakCap();
         }
         return customerTotal;
     }

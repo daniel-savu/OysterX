@@ -8,6 +8,8 @@ public class Journey {
 
     private final JourneyEvent start;
     private final JourneyEvent end;
+    Config config = new Config();
+
 
     public Journey(JourneyEvent start, JourneyEvent end) {
         this.start = start;
@@ -39,11 +41,11 @@ public class Journey {
     }
 
     public int durationSeconds() {
-        return (int) ((end.time() - start.time()) / 1000);
+        return (int) ((end.time() - start.time()) / config.getMillisecondsInASecond());
     }
 
     public String durationMinutes() {
-        return "" + durationSeconds() / 60 + ":" + durationSeconds() % 60;
+        return "" + durationSeconds() / config.getSecondsInAMinute() + ":" + durationSeconds() % config.getSecondsInAMinute();
     }
 
     private String format(long time) {

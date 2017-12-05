@@ -3,23 +3,25 @@ package com.tfl.billing;
 import java.math.BigDecimal;
 import java.util.HashMap;
 
-public class ConfigParser {
+public class Config {
 
-    final BigDecimal peakLongJourneyPrice;
-    final BigDecimal peakShortJourneyPrice;
-    final BigDecimal offPeakLongJourneyPrice;
-    final BigDecimal offPeakShortJourneyPrice;
-    final int longJourneyDurationInMinutes;
-    final int secondsInAMinute;
-    final int morningPeakStart;
-    final int morningPeakEnd;
-    final int eveningPeakStart;
-    final int eveningPeakEnd;
-    final BigDecimal offPeakCap;
-    final BigDecimal peakCap;
-    HashMap<String, String> rawConstants = new HashMap<>();
+    private final BigDecimal peakLongJourneyPrice;
+    private final BigDecimal peakShortJourneyPrice;
+    private final BigDecimal offPeakLongJourneyPrice;
+    private final BigDecimal offPeakShortJourneyPrice;
+    private final int longJourneyDurationInMinutes;
+    private final int secondsInAMinute;
+    private final int morningPeakStart;
+    private final int morningPeakEnd;
+    private final int eveningPeakStart;
+    private final int eveningPeakEnd;
+    private final BigDecimal offPeakCap;
+    private final BigDecimal peakCap;
 
-    public ConfigParser() {
+    private final int millisecondsInASecond;
+    private HashMap<String, String> rawConstants = new HashMap<>();
+
+    public Config() {
         ConfigReader configReader = new ConfigReader();
         rawConstants = configReader.getRawConstants();
 
@@ -58,6 +60,9 @@ public class ConfigParser {
 
         String rawPeakCap = rawConstants.get("PEAK_CAP");
         peakCap = new BigDecimal(rawPeakCap);
+
+        String rawMillisecondsInASecond = rawConstants.get("MILLISECONDS_IN_A_SECOND");
+        millisecondsInASecond = Integer.parseInt(rawMillisecondsInASecond);
     }
 
     public BigDecimal getPeakLongJourneyPrice() {
@@ -108,7 +113,7 @@ public class ConfigParser {
         return peakCap;
     }
 
-    public HashMap<String, String> getRawConstants() {
-        return rawConstants;
+    public int getMillisecondsInASecond() {
+        return millisecondsInASecond;
     }
 }

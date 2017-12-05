@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61d3a715-cf76-478c-9a40-aaa8f05716a0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/tfl/billing/CalculatorTest.java" afterPath="$PROJECT_DIR$/tests/com/tfl/billing/CalculatorTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tfl/billing/Example.java" afterPath="$PROJECT_DIR$/src/com/tfl/billing/Example.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tfl/billing/PaymentHandler.java" afterPath="$PROJECT_DIR$/src/com/tfl/billing/PaymentHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/com/tfl/billing/TravelTrackerTests.java" afterPath="$PROJECT_DIR$/tests/com/tfl/billing/TravelTrackerTests.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +20,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TravelTrackerTests.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Example.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/Example.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TravelTrackerTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/com/tfl/billing/TravelTrackerTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="386">
+              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -34,26 +45,54 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
               <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TravelTracker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/TravelTracker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PaymentHandler.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PaymentHandler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/PaymentHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+            <state relative-caret-position="915">
+              <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#adaptToCap#0;class#PaymentHandler#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalculatorConfigReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/CalculatorConfigReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="311">
+              <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1557#1558#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/DatabaseController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="11" column="54" lean-forward="false" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalculatorConfigParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/CalculatorConfigParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-334">
+              <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UnknownOysterCardException.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/UnknownOysterCardException.java">
+      <file leaf-file-name="CustomerDatabase.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/lib/external.jar!/com/tfl/external/CustomerDatabase.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="36" lean-forward="false" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+            <state relative-caret-position="210">
+              <caret line="22" column="100" lean-forward="false" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="100" />
               <folding />
             </state>
           </provider>
@@ -84,45 +123,9 @@
       <file leaf-file-name="CalculatorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/com/tfl/billing/CalculatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="-495">
+              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JourneyEvent.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/JourneyEvent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="53" lean-forward="false" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JourneyStart.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/JourneyStart.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-              <folding>
-                <element signature="e#255#256#0" expanded="true" />
-                <element signature="e#300#301#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JourneyEnd.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/JourneyEnd.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-              <folding>
-                <element signature="e#250#251#0" expanded="true" />
-                <element signature="e#295#296#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -182,8 +185,6 @@
         <option value="$PROJECT_DIR$/src/com/tfl/billing/JourneyStart.java" />
         <option value="$PROJECT_DIR$/src/com/tfl/billing/JourneyEnd.java" />
         <option value="$PROJECT_DIR$/tests/JourneyTests.java" />
-        <option value="$PROJECT_DIR$/src/com/tfl/billing/Example.java" />
-        <option value="$PROJECT_DIR$/src/com/tfl/billing/PaymentHandler.java" />
         <option value="$PROJECT_DIR$/tests/com/tfl/billing/JourneyGenerator.java" />
         <option value="$PROJECT_DIR$/tests/com/tfl/billing/JourneyTests.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -191,6 +192,9 @@
         <option value="$PROJECT_DIR$/src/com/tfl/billing/CalculatorConfigParser.java" />
         <option value="$PROJECT_DIR$/src/com/tfl/billing/Calculator.java" />
         <option value="$PROJECT_DIR$/tests/com/tfl/billing/CalculatorTest.java" />
+        <option value="$PROJECT_DIR$/tests/com/tfl/billing/TravelTrackerTests.java" />
+        <option value="$PROJECT_DIR$/src/com/tfl/billing/Example.java" />
+        <option value="$PROJECT_DIR$/src/com/tfl/billing/PaymentHandler.java" />
       </list>
     </option>
   </component>
@@ -214,6 +218,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -264,9 +271,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -300,53 +304,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in OysterX">
-    <configuration default="false" name="CalculatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.tfl.billing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="OysterX" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.tfl.billing" />
-      <option name="MAIN_CLASS_NAME" value="com.tfl.billing.CalculatorTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="CalculatorConfigReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.tfl.billing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.tfl.billing.CalculatorConfigReader" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="OysterX" />
-      <envs />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.Example">
     <configuration default="false" name="All in OysterX" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="OysterX" />
@@ -418,6 +376,52 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="TravelTrackerTests.scanningUnknownCardIDThrowsUnknownOysterCardException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.tfl.billing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="OysterX" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.tfl.billing" />
+      <option name="MAIN_CLASS_NAME" value="com.tfl.billing.TravelTrackerTests" />
+      <option name="METHOD_NAME" value="scanningUnknownCardIDThrowsUnknownOysterCardException" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="Example" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.tfl.billing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.tfl.billing.Example" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="OysterX" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -625,19 +629,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.CalculatorTest" />
-      <item index="1" class="java.lang.String" itemvalue="Application.CalculatorConfigReader" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.All in OysterX" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.All in OysterX" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests.scanningUnknownCardIDThrowsUnknownOysterCardException" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Example" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.All in OysterX" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.CalculatorTest" />
-        <item index="4" class="java.lang.String" itemvalue="Application.CalculatorConfigReader" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Example" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests.scanningUnknownCardIDThrowsUnknownOysterCardException" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.All in OysterX" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.TravelTrackerTests" />
       </list>
     </recent_temporary>
   </component>
@@ -655,34 +659,34 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_OysterX - 2017.12.05 at 16h 38m 47s.xml">
-      <configuration name="All in OysterX" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 28m 58s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_OysterX - 2017.12.05 at 16h 39m 16s.xml">
-      <configuration name="All in OysterX" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 00s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CalculatorTest_journeyStartBefore6AMAndJourneyEndBetween6And10AMDetectsAsPeak - 2017.12.05 at 12h 56m 53s.xml">
-      <configuration name="CalculatorTest.journeyStartBefore6AMAndJourneyEndBetween6And10AMDetectsAsPeak" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 05s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CalculatorTest_journeyStartBefore6AMAndJourneyEndBetween6And10AMDetectsAsPeak - 2017.12.05 at 12h 57m 25s.xml">
-      <configuration name="CalculatorTest.journeyStartBefore6AMAndJourneyEndBetween6And10AMDetectsAsPeak" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 08s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CalculatorTest_journeyStartsAfter6AMAndJourneyEndsBefore10AMDetectsAsPeak - 2017.12.05 at 12h 59m 23s.xml">
-      <configuration name="CalculatorTest.journeyStartsAfter6AMAndJourneyEndsBefore10AMDetectsAsPeak" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 18s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CalculatorTest_journeyStartsAndFinishesBetween10AMAnd17PMDetectsOffPeak - 2017.12.05 at 13h 02m 56s.xml">
-      <configuration name="CalculatorTest.journeyStartsAndFinishesBetween10AMAnd17PMDetectsOffPeak" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 21s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="CalculatorTest_journeyStartsBefore10AMAndFinishesAfter10AMDetectsAsPeak - 2017.12.05 at 13h 01m 00s.xml">
-      <configuration name="CalculatorTest.journeyStartsBefore10AMAndFinishesAfter10AMDetectsAsPeak" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 47s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="JourneyTests - 2017.12.05 at 12h 27m 34s.xml">
-      <configuration name="JourneyTests" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 50s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TravelTrackerTests - 2017.12.05 at 16h 39m 12s.xml">
-      <configuration name="TravelTrackerTests" configurationId="JUnit" />
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 52s.xml">
+      <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 16h 39m 06s.xml">
+    <history-entry file="TravelTrackerTests_scanningKnownCardIDDoesNotThrowException - 2017.12.05 at 17h 29m 55s.xml">
       <configuration name="TravelTrackerTests.scanningKnownCardIDDoesNotThrowException" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -693,7 +697,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45741758" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45625842" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -705,7 +709,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27825466" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28183118" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -726,7 +730,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -826,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/external.jar!/com/tfl/external/CustomerDatabase.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/external.jar!/com/tfl/underground/OysterReaderLocator.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
@@ -907,7 +904,7 @@
         <state relative-caret-position="152">
           <caret line="805" column="0" lean-forward="false" selection-start-line="805" selection-start-column="0" selection-end-line="805" selection-end-column="0" />
           <folding>
-            <element signature="e#34170#34171#0" expanded="true" />
+            <element signature="e#34170#34171#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -924,44 +921,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1020">
           <caret line="70" column="5" lean-forward="false" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/CalculatorConfigParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/CalculatorConfigReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1433#1434#0" expanded="true" />
-            <element signature="e#1468#1469#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/DatabaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/Example.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -1004,16 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/PaymentHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/TravelTracker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -1030,14 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/com/tfl/billing/CalculatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/com/tfl/billing/DateFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1050,15 +991,81 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/DatabaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="11" column="54" lean-forward="false" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/external.jar!/com/tfl/external/CustomerDatabase.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="100" lean-forward="false" selection-start-line="22" selection-start-column="64" selection-end-line="22" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/tfl/billing/CalculatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-495">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/com/tfl/billing/TravelTrackerTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state relative-caret-position="386">
+          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/Example.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/CalculatorConfigReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1557#1558#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/CalculatorConfigParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-334">
+          <caret line="11" column="43" lean-forward="true" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/tfl/billing/PaymentHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="80" column="5" lean-forward="true" selection-start-line="80" selection-start-column="5" selection-end-line="80" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#adaptToCap#0;class#PaymentHandler#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

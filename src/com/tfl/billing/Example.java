@@ -25,6 +25,19 @@ public class Example {
         bakerStreetReader.touch(myCard);
         //minutesPass(10);
         kingsCrossReader.touch(myCard);
+        bakerStreetReader.touch(myCard);
+        //minutesPass(10);
+        kingsCrossReader.touch(myCard);
+        bakerStreetReader.touch(myCard);
+        //minutesPass(10);
+        kingsCrossReader.touch(myCard);
+        bakerStreetReader.touch(myCard);
+        //minutesPass(10);
+        kingsCrossReader.touch(myCard);
+        bakerStreetReader.touch(myCard);
+        //minutesPass(10);
+        kingsCrossReader.touch(myCard);
+
 
         PaymentHandler paymentHandler = new PaymentHandler();
         paymentHandler.chargeAccounts();

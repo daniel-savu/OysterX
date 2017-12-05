@@ -11,6 +11,8 @@ import java.util.List;
 public class PaymentHandler {
 
     public static final List<Customer> CUSTOMERS = DatabaseController.getCustomers();
+    private static final BigDecimal OFF_PEAK_CAP = new BigDecimal("7.00");
+    private static final BigDecimal PEAK_CAP = new BigDecimal("9.00");
     Calculator calculator = new Calculator();
 
 
@@ -58,17 +60,36 @@ public class PaymentHandler {
     }
 
     private BigDecimal getCustomerTotal(List<Journey> journeys) {
-        BigDecimal customerTotal = new BigDecimal(0);
+        BigDecimal customerTotal = new BigDecimal("0");
         BigDecimal priceOfJourney = null;
+        boolean customer_travelled_on_peak_time = false;
 
         for (Journey journey : journeys) {
             priceOfJourney = calculator.calculatePriceOfJourney(journey);
+            if (calculator.journeyIsPeakTime(journey)) customer_travelled_on_peak_time = true;
             try{
                 customerTotal = customerTotal.add(priceOfJourney);
             } catch(Exception e) {
                 System.out.println(e.getMessage());
             }
 
+        }
+
+        customerTotal = adaptToCap(customerTotal, customer_travelled_on_peak_time);
+
+        return customerTotal;
+    }
+
+    private BigDecimal adaptToCap(BigDecimal customerTotal, boolean customer_travelled_on_peak_time) {
+        if (customer_travelled_on_peak_time) {
+            if (customerTotal.compareTo(PEAK_CAP) == 1) {
+                customerTotal = PEAK_CAP;
+            }
+        }
+        else {
+            if (customerTotal.compareTo(OFF_PEAK_CAP) == 1) {
+                customerTotal = OFF_PEAK_CAP;
+            }
         }
         return customerTotal;
     }

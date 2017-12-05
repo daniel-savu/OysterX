@@ -41,7 +41,7 @@ public class TravelTrackerTests {
 
     @Test
     public void scanningKnownCardIDDoesNotThrowException() {
-        UUID knownOysterCardID = UUID.fromString("38400000-8cf0-11bd-b23e-10b96e4ef00d");
+        UUID knownOysterCardID = UUID.fromString("89adbd1c-4de6-40e5-98bc-b3315c6873f2");
         try {
             travelTracker.cardScanned(knownOysterCardID, readerOriginID);
 

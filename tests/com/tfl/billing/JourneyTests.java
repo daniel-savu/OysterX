@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.UUID;
 
 import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.fail;
 
 public class JourneyTests {
 
@@ -52,5 +53,18 @@ public class JourneyTests {
         assertTrue(journey.startTime().before(journey.endTime()));
     }
 
+    @Test
+    public void journeyEndTimeIsBeforeStartTime() throws InterruptedException
+    {
+        try{
+            createTestJourneyWithStartTimeAndEndTime ("09:20:00", "08:00:00");
+        }catch (Exception e) {
+            if (e instanceof ExceptionIsJourneyEndIsBeforeStart) {
+                assertTrue (journey.endTime ().before (journey.startTime ()));
+            }else{
+                fail ("Your journey can't End before it Starts!");
+            }
+        }
+    }
 
 }

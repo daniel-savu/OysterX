@@ -10,30 +10,27 @@ import java.util.List;
 
 public class PaymentHandler {
 
-    public static final List<Customer> CUSTOMERS = DatabaseController.getCustomers();
+    public static final List<Customer> customers = DatabaseController.getCustomers();
     private static final BigDecimal OFF_PEAK_CAP = new BigDecimal("7.00");
     private static final BigDecimal PEAK_CAP = new BigDecimal("9.00");
     Calculator calculator = new Calculator();
 
 
     public void chargeAccounts() {
-        for (Customer customer : CUSTOMERS) {
+        for (Customer customer : customers) {
             makePayment(customer);
         }
     }
 
     void makePayment (Customer customer) {
-
         List<JourneyEvent> customerJourneyEvents = collectCustomerJourneyEvents(customer);
         List<Journey> journeys = transformJourneyEventsToJourneys(customerJourneyEvents);
         BigDecimal customerTotal = getCustomerTotal(journeys);
-        manageTransaction(customer,journeys, customerTotal);
+        manageTransaction(customer, journeys, customerTotal);
     }
 
     List<JourneyEvent> collectCustomerJourneyEvents(Customer customer) {
-
         List<JourneyEvent> customerJourneyEvents = new ArrayList<JourneyEvent>();
-
         for (JourneyEvent journeyEvent : TravelTracker.eventLog) {
             if (journeyEvent.cardId().equals(customer.cardId())) {
                 customerJourneyEvents.add(journeyEvent);
@@ -43,7 +40,6 @@ public class PaymentHandler {
     }
 
     private List<Journey> transformJourneyEventsToJourneys(List<JourneyEvent> customerJourneyEvents) {
-
         List<Journey> journeys = new ArrayList<Journey>();
         JourneyEvent start = null;
 
@@ -62,26 +58,24 @@ public class PaymentHandler {
     private BigDecimal getCustomerTotal(List<Journey> journeys) {
         BigDecimal customerTotal = new BigDecimal("0");
         BigDecimal priceOfJourney = null;
-        boolean customer_travelled_on_peak_time = false;
+        boolean customerTravelledOnPeakTime = false;
 
         for (Journey journey : journeys) {
             priceOfJourney = calculator.calculatePriceOfJourney(journey);
-            if (calculator.journeyIsPeakTime(journey)) customer_travelled_on_peak_time = true;
+            if (calculator.journeyIsPeakTime(journey)) customerTravelledOnPeakTime = true;
             try{
                 customerTotal = customerTotal.add(priceOfJourney);
             } catch(Exception e) {
                 System.out.println(e.getMessage());
             }
-
         }
 
-        customerTotal = adaptToCap(customerTotal, customer_travelled_on_peak_time);
-
+        customerTotal = checkCapIsNotExceeded(customerTotal, customerTravelledOnPeakTime);
         return customerTotal;
     }
 
-    private BigDecimal adaptToCap(BigDecimal customerTotal, boolean customer_travelled_on_peak_time) {
-        if (customer_travelled_on_peak_time) {
+    private BigDecimal checkCapIsNotExceeded(BigDecimal customerTotal, boolean customerTravelledOnPeakTime) {
+        if (customerTravelledOnPeakTime) {
             if (customerTotal.compareTo(PEAK_CAP) == 1) {
                 customerTotal = PEAK_CAP;
             }
@@ -97,7 +91,6 @@ public class PaymentHandler {
 
     private void manageTransaction (Customer customer, List<Journey> journeys, BigDecimal customerTotal) {
         PaymentsSystem.getInstance().charge(customer, journeys, roundToNearestPenny(customerTotal));
-
     }
 
     private BigDecimal roundToNearestPenny(BigDecimal poundsAndPence) {

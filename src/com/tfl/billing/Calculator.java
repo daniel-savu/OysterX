@@ -70,7 +70,7 @@ public class Calculator {
         return calendar.get(Calendar.HOUR_OF_DAY);
     }
 
-    private boolean isLong(Journey journey){
+    public boolean isLong(Journey journey){
         if(journey.durationSeconds() > calculatorConfigParser.getLongJourneyDurationInMinutes() * calculatorConfigParser.getSecondsInAMinute()) {
             return true;
         }

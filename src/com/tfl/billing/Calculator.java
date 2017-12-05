@@ -10,6 +10,11 @@ public class Calculator {
     private static final BigDecimal OFF_PEAK_LONG_JOURNEY_PRICE = new BigDecimal(2.70);
     private static final BigDecimal OFF_PEAK_SHORT_JOURNEY_PRICE = new BigDecimal(1.60);
     private static final int LONG_JOURNEY_DURATION_IN_MINUTES = 25;
+    private static final int SECONDS_IN_A_MINUTE = 60;
+    private static final int MORNING_PEAK_START = 6;
+    private static final int MORNING_PEAK_END = 10;
+    private static final int EVENING_PEAK_START = 17;
+    private static final int EVENING_PEAK_END = 20;
 
     public boolean journeyIsPeakTime(Journey journey) {
 
@@ -41,28 +46,28 @@ public class Calculator {
     }
 
     private boolean isEveningPeak(int hour) {
-        if (hour >= 17 && hour < 20) {
+        if (hour >= EVENING_PEAK_START && hour < EVENING_PEAK_END) {
             return true;
         }
         return false;
     }
 
     private boolean isMorningPeak(int hour) {
-        if (hour >= 6 && hour < 10) {
+        if (hour >= MORNING_PEAK_START && hour < MORNING_PEAK_END) {
                 return true;
         }
         return false;
     }
 
     private boolean containsEveningPeak(int hourStart, int hourEnd) {
-        if (hourStart <= 17 && hourEnd >= 20) {
+        if (hourStart <= EVENING_PEAK_START && hourEnd >= EVENING_PEAK_END) {
             return true;
         }
         return false;
     }
 
     private boolean containsMorningPeak(int hourStart, int hourEnd) {
-        if (hourStart <= 6 && hourEnd >= 10) {
+        if (hourStart <= MORNING_PEAK_START && hourEnd >= MORNING_PEAK_END) {
             return true;
         }
         return false;
@@ -75,7 +80,7 @@ public class Calculator {
     }
 
     private boolean isLong(Journey journey){
-        if(journey.durationSeconds() > LONG_JOURNEY_DURATION_IN_MINUTES*60) {
+        if(journey.durationSeconds() > LONG_JOURNEY_DURATION_IN_MINUTES * SECONDS_IN_A_MINUTE) {
             return true;
         }
         return false;
@@ -84,14 +89,14 @@ public class Calculator {
     public BigDecimal calculatePriceOfJourney(Journey journey) {
         BigDecimal journeyPrice;
         if(journeyIsPeakTime(journey)){
-            journeyPrice = getShortLongPeakFare(journey);
+            journeyPrice = getShortOrLongPeakFare(journey);
         } else {
-            journeyPrice = getShortLongOffPeakFare(journey);
+            journeyPrice = getShortOrLongOffPeakFare(journey);
         }
         return journeyPrice;
     }
 
-    private BigDecimal getShortLongPeakFare(Journey journey) {
+    private BigDecimal getShortOrLongPeakFare(Journey journey) {
         if(isLong(journey)) {
             return PEAK_LONG_JOURNEY_PRICE;
         } else {
@@ -99,7 +104,7 @@ public class Calculator {
         }
     }
 
-    private BigDecimal getShortLongOffPeakFare(Journey journey) {
+    private BigDecimal getShortOrLongOffPeakFare(Journey journey) {
         if(isLong(journey)) {
             return OFF_PEAK_LONG_JOURNEY_PRICE;
         } else {

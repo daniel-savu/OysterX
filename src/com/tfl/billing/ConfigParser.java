@@ -15,6 +15,8 @@ public class ConfigParser {
     final int morningPeakEnd;
     final int eveningPeakStart;
     final int eveningPeakEnd;
+    final BigDecimal offPeakCap;
+    final BigDecimal peakCap;
     HashMap<String, String> rawConstants = new HashMap<>();
 
     public ConfigParser() {
@@ -50,6 +52,12 @@ public class ConfigParser {
 
         String rawEveningPeakEnd = rawConstants.get("EVENING_PEAK_END");
         eveningPeakEnd = Integer.parseInt(rawEveningPeakEnd);
+
+        String rawOffPeakCap = rawConstants.get("OFF_PEAK_CAP");
+        offPeakCap = new BigDecimal(rawOffPeakCap);
+
+        String rawPeakCap = rawConstants.get("PEAK_CAP");
+        peakCap = new BigDecimal(rawPeakCap);
     }
 
     public BigDecimal getPeakLongJourneyPrice() {
@@ -90,6 +98,14 @@ public class ConfigParser {
 
     public int getEveningPeakEnd() {
         return eveningPeakEnd;
+    }
+
+    public BigDecimal getOffPeakCap() {
+        return offPeakCap;
+    }
+
+    public BigDecimal getPeakCap() {
+        return peakCap;
     }
 
     public HashMap<String, String> getRawConstants() {

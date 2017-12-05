@@ -11,8 +11,7 @@ import java.util.List;
 public class PaymentHandler {
 
     public static final List<Customer> customers = DatabaseController.getCustomers();
-    private static final BigDecimal OFF_PEAK_CAP = new BigDecimal("7.00");
-    private static final BigDecimal PEAK_CAP = new BigDecimal("9.00");
+    ConfigParser configParser = new ConfigParser();
     Calculator calculator = new Calculator();
 
 
@@ -62,7 +61,8 @@ public class PaymentHandler {
 
         for (Journey journey : journeys) {
             priceOfJourney = calculator.calculatePriceOfJourney(journey);
-            if (calculator.journeyIsPeakTime(journey)) customerTravelledOnPeakTime = true;
+            customerTravelledOnPeakTime = calculator.journeyIsPeakTime(journey);
+
             try{
                 customerTotal = customerTotal.add(priceOfJourney);
             } catch(Exception e) {
@@ -70,24 +70,32 @@ public class PaymentHandler {
             }
         }
 
-        customerTotal = checkCapIsNotExceeded(customerTotal, customerTravelledOnPeakTime);
+        customerTotal = applyCapIfNeeded(customerTotal, customerTravelledOnPeakTime);
         return customerTotal;
     }
 
-    private BigDecimal checkCapIsNotExceeded(BigDecimal customerTotal, boolean customerTravelledOnPeakTime) {
+    private BigDecimal applyCapIfNeeded(BigDecimal customerTotal, boolean customerTravelledOnPeakTime) {
         if (customerTravelledOnPeakTime) {
-            if (customerTotal.compareTo(PEAK_CAP) == 1) {
-                customerTotal = PEAK_CAP;
-            }
-        }
-        else {
-            if (customerTotal.compareTo(OFF_PEAK_CAP) == 1) {
-                customerTotal = OFF_PEAK_CAP;
-            }
+            customerTotal = applyPeakCapIfNeeded(customerTotal);
+        } else {
+            customerTotal = applyOffPeakCapIfNeeded(customerTotal);
         }
         return customerTotal;
     }
 
+    private BigDecimal applyPeakCapIfNeeded(BigDecimal customerTotal) {
+        if (BigDecimalCompare.greaterThan(customerTotal, configParser.getPeakCap())) {
+            customerTotal = configParser.getPeakCap();
+        }
+        return customerTotal;
+    }
+
+    private BigDecimal applyOffPeakCapIfNeeded(BigDecimal customerTotal) {
+        if (BigDecimalCompare.greaterThan(customerTotal, configParser.getOffPeakCap())) {
+            customerTotal = configParser.getOffPeakCap();
+        }
+        return customerTotal;
+    }
 
     private void manageTransaction (Customer customer, List<Journey> journeys, BigDecimal customerTotal) {
         PaymentsSystem.getInstance().charge(customer, journeys, roundToNearestPenny(customerTotal));

@@ -3,6 +3,7 @@ package com.tfl.billing;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
@@ -77,5 +78,50 @@ public class CalculatorTest {
     @Test
     public void twentyMinutesJourneyIsShort() throws InterruptedException {
         createTestJourneyWithStartTimeAndEndTime("20:30:00","20:50:00");
+        Assert.assertFalse(calculator.isLong(journey));
     }
+
+    @Test
+    public void thrityMinutesJourneyIsLong() throws InterruptedException {
+        createTestJourneyWithStartTimeAndEndTime("20:20:00","20:50:00");
+        Assert.assertTrue(calculator.isLong(journey));
+    }
+
+    @Test
+    public void journeyStartsBefore6AMAndEndsAfter10AMDetectedAsPeak() throws InterruptedException {
+        createTestJourneyWithStartTimeAndEndTime("05:55:00","10:05:00");
+        Assert.assertTrue(calculator.journeyIsPeakTime(journey));
+    }
+
+    @Test
+    public void journeyStartsBefore17PMAndEndsAfter20PMDetectedAsPeakTime() throws InterruptedException {
+        createTestJourneyWithStartTimeAndEndTime("16:55:00","20:05:00");
+        Assert.assertTrue(calculator.journeyIsPeakTime(journey));
+    }
+
+    @Test
+    public void shortOffPeakJourneyPriceIsCorrect() throws InterruptedException {
+        createTestJourneyWithStartTimeAndEndTime("12:00:00","12:10:00");
+        Assert.assertEquals(new BigDecimal(1.60),calculator.calculatePriceOfJourney(journey));
+    }
+
+    @Test
+    public void shortPeakJourneyPriceIsCorrect() throws InterruptedException {
+        createTestJourneyWithStartTimeAndEndTime("08:00:00","08:10:00");
+        Assert.assertEquals(new BigDecimal(2.90),calculator.calculatePriceOfJourney(journey));
+    }
+
+    @Test
+    public void longOffPeakJourneyPriceIsCorrect() throws InterruptedException {
+        createTestJourneyWithStartTimeAndEndTime("12:00:00","12:40:00");
+        Assert.assertEquals(new BigDecimal(2.70),calculator.calculatePriceOfJourney(journey));
+    }
+
+
+    @Test
+    public void longPeakJourneyPriceIsCorrect() throws InterruptedException {
+        createTestJourneyWithStartTimeAndEndTime("08:00:00","08:40:00");
+        Assert.assertEquals(new BigDecimal(3.80),calculator.calculatePriceOfJourney(journey));
+    }
+
 }

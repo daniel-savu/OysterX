@@ -21,7 +21,7 @@ public class Calculator {
         return isPeak(journey.startTime()) || isPeak(journey.endTime()) || isPeak(journey.startTime(), journey.endTime());
     }
 
-    public boolean isPeak(Date time) {
+    private boolean isPeak(Date time) {
         int hour = getCurrentHour(time);
         if (isMorningPeak(hour)) {
             return true;
@@ -32,7 +32,7 @@ public class Calculator {
         return false;
     }
 
-    public boolean isPeak(Date timeStart, Date timeEnd) {
+    private boolean isPeak(Date timeStart, Date timeEnd) {
         int hourStart = getCurrentHour(timeStart);
         int hourEnd = getCurrentHour(timeEnd);
 
@@ -79,7 +79,7 @@ public class Calculator {
         return calendar.get(Calendar.HOUR_OF_DAY);
     }
 
-    private boolean isLong(Journey journey){
+    public boolean isLong(Journey journey){
         if(journey.durationSeconds() > LONG_JOURNEY_DURATION_IN_MINUTES * SECONDS_IN_A_MINUTE) {
             return true;
         }

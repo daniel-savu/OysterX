@@ -1,2 +1,8 @@
-/.idea
-.idea/workspace.xml
+#Entire content of "out" directories
+out/
+
+#Entire content of ".idea" directories
+.idea/
+
+#Log file
+*.log

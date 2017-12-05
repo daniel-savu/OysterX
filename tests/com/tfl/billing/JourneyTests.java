@@ -33,29 +33,25 @@ public class JourneyTests {
 
 
     @Test
-    public void journeyStartStaionIdEqualsOriginId() throws InterruptedException
-    {
+    public void journeyStartStaionIdEqualsOriginId() throws InterruptedException {
         createTestJourneyWithStartTimeAndEndTime("07:30:00","07:45:00");
         Assert.assertEquals(journey.originId(), journeyStart.readerId());
     }
 
     @Test
-    public void journeyEndStationIdEqualsDestinationId() throws InterruptedException
-    {
+    public void journeyEndStationIdEqualsDestinationId() throws InterruptedException {
         createTestJourneyWithStartTimeAndEndTime("07:30:00","07:45:00");
         Assert.assertEquals(journey.destinationId(),journeyEnd.readerId());
     }
 
     @Test
-    public void journeyStartTimeIsBeforeJourneyEndTime() throws InterruptedException
-    {
+    public void journeyStartTimeIsBeforeJourneyEndTime() throws InterruptedException {
         createTestJourneyWithStartTimeAndEndTime("07:30:00","07:45:00");
         assertTrue(journey.startTime().before(journey.endTime()));
     }
 
     @Test
-    public void journeyEndTimeIsBeforeStartTime() throws InterruptedException
-    {
+    public void journeyEndTimeIsBeforeStartTime() throws InterruptedException {
         try{
             createTestJourneyWithStartTimeAndEndTime ("09:20:00", "08:00:00");
         }catch (Exception e) {

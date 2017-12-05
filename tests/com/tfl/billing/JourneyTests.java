@@ -1,6 +1,5 @@
-import com.tfl.billing.Journey;
-import com.tfl.billing.JourneyEnd;
-import com.tfl.billing.JourneyStart;
+package com.tfl.billing;
+
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Assert;
 import org.junit.Rule;

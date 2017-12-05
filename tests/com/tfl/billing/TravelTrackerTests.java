@@ -1,6 +1,7 @@
-import com.tfl.billing.TravelTracker;
+package com.tfl.billing;
+
 import org.jmock.integration.junit4.JUnitRuleMockery;
-import org.junit.*;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 

@@ -9,9 +9,11 @@ import java.util.List;
 
 
 public class PaymentHandler {
+
+    public static final List<Customer> CUSTOMERS = DatabaseController.getCustomers();
+
     public void chargeAccounts() {
-        List<Customer> customers = DatabaseController.getCustomers();
-        for (Customer customer : customers) {
+        for (Customer customer : CUSTOMERS) {
             makePayment(customer);
         }
     }

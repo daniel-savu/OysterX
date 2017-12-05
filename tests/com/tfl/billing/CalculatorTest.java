@@ -6,9 +6,6 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-/**
- * Created by bogdannitescu on 05/12/2017.
- */
 public class CalculatorTest {
     private UUID cardExampleID = UUID.randomUUID();
     private UUID readerOriginID = UUID.randomUUID();

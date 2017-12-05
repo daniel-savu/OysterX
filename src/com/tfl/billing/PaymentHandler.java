@@ -11,6 +11,8 @@ import java.util.List;
 public class PaymentHandler {
 
     public static final List<Customer> CUSTOMERS = DatabaseController.getCustomers();
+    Calculator calculator = new Calculator();
+
 
     public void chargeAccounts() {
         for (Customer customer : CUSTOMERS) {
@@ -19,6 +21,7 @@ public class PaymentHandler {
     }
 
     void makePayment (Customer customer) {
+
         List<JourneyEvent> customerJourneyEvents = collectCustomerJourneyEvents(customer);
         List<Journey> journeys = transformJourneyEventsToJourneys(customerJourneyEvents);
         BigDecimal customerTotal = getCustomerTotal(journeys);
@@ -26,7 +29,9 @@ public class PaymentHandler {
     }
 
     List<JourneyEvent> collectCustomerJourneyEvents(Customer customer) {
+
         List<JourneyEvent> customerJourneyEvents = new ArrayList<JourneyEvent>();
+
         for (JourneyEvent journeyEvent : TravelTracker.eventLog) {
             if (journeyEvent.cardId().equals(customer.cardId())) {
                 customerJourneyEvents.add(journeyEvent);
@@ -39,6 +44,7 @@ public class PaymentHandler {
 
         List<Journey> journeys = new ArrayList<Journey>();
         JourneyEvent start = null;
+
         for (JourneyEvent event : customerJourneyEvents) {
             if (event instanceof JourneyStart) {
                 start = event;
@@ -54,9 +60,8 @@ public class PaymentHandler {
     private BigDecimal getCustomerTotal(List<Journey> journeys) {
         BigDecimal customerTotal = new BigDecimal(0);
         BigDecimal priceOfJourney = null;
+
         for (Journey journey : journeys) {
-            //System.out.println(journey.endTime());
-            Calculator calculator = new Calculator();
             priceOfJourney = calculator.calculatePriceOfJourney(journey);
             try{
                 customerTotal = customerTotal.add(priceOfJourney);

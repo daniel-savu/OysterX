@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class CalculatorConfigReader {
@@ -40,8 +41,8 @@ public class CalculatorConfigReader {
     }
 
     void addRowValuesToRawConstants(String[] configLine) {
-        String constantName = configLine[0];
-        String constantValue = configLine[1];
+        String constantName = configLine[0].trim().replaceAll("\uFEFF", "");
+        String constantValue = configLine[1].trim().replaceAll("\uFEFF", "");
         rawConstants.put(constantName, constantValue);
     }
 

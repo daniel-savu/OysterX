@@ -1,10 +1,9 @@
 package com.tfl.billing;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.HashMap;
 
-public class CalculatorConfigParser {
+public class ConfigParser {
 
     final BigDecimal peakLongJourneyPrice;
     final BigDecimal peakShortJourneyPrice;
@@ -18,9 +17,9 @@ public class CalculatorConfigParser {
     final int eveningPeakEnd;
     HashMap<String, String> rawConstants = new HashMap<>();
 
-    public CalculatorConfigParser() {
-        CalculatorConfigReader calculatorConfigReader = new CalculatorConfigReader();
-        rawConstants = calculatorConfigReader.getRawConstants();
+    public ConfigParser() {
+        ConfigReader configReader = new ConfigReader();
+        rawConstants = configReader.getRawConstants();
 
         String rawPeakLongJourneyPrice = rawConstants.get("PEAK_LONG_JOURNEY_PRICE");
         peakLongJourneyPrice = new BigDecimal(rawPeakLongJourneyPrice);

@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Calculator {
 
-    CalculatorConfigParser calculatorConfigParser = new CalculatorConfigParser();
+    ConfigParser configParser = new ConfigParser();
     public boolean journeyIsPeakTime(Journey journey) {
 
         return isPeak(journey.startTime()) || isPeak(journey.endTime()) || isPeak(journey.startTime(), journey.endTime());
@@ -37,28 +37,28 @@ public class Calculator {
     }
 
     private boolean isEveningPeak(int hour) {
-        if (hour >= calculatorConfigParser.getEveningPeakStart() && hour < calculatorConfigParser.getEveningPeakEnd()) {
+        if (hour >= configParser.getEveningPeakStart() && hour < configParser.getEveningPeakEnd()) {
             return true;
         }
         return false;
     }
 
     private boolean isMorningPeak(int hour) {
-        if (hour >= calculatorConfigParser.getMorningPeakStart() && hour < calculatorConfigParser.morningPeakEnd) {
+        if (hour >= configParser.getMorningPeakStart() && hour < configParser.morningPeakEnd) {
                 return true;
         }
         return false;
     }
 
     private boolean containsEveningPeak(int hourStart, int hourEnd) {
-        if (hourStart <= calculatorConfigParser.getEveningPeakStart() && hourEnd >= calculatorConfigParser.getEveningPeakEnd()) {
+        if (hourStart <= configParser.getEveningPeakStart() && hourEnd >= configParser.getEveningPeakEnd()) {
             return true;
         }
         return false;
     }
 
     private boolean containsMorningPeak(int hourStart, int hourEnd) {
-        if (hourStart <= calculatorConfigParser.getMorningPeakStart() && hourEnd >= calculatorConfigParser.getMorningPeakEnd()) {
+        if (hourStart <= configParser.getMorningPeakStart() && hourEnd >= configParser.getMorningPeakEnd()) {
             return true;
         }
         return false;
@@ -71,7 +71,7 @@ public class Calculator {
     }
 
     public boolean isLong(Journey journey){
-        if(journey.durationSeconds() > calculatorConfigParser.getLongJourneyDurationInMinutes() * calculatorConfigParser.getSecondsInAMinute()) {
+        if(journey.durationSeconds() > configParser.getLongJourneyDurationInMinutes() * configParser.getSecondsInAMinute()) {
             return true;
         }
         return false;
@@ -89,17 +89,17 @@ public class Calculator {
 
     private BigDecimal getShortOrLongPeakFare(Journey journey) {
         if(isLong(journey)) {
-            return calculatorConfigParser.getPeakLongJourneyPrice();
+            return configParser.getPeakLongJourneyPrice();
         } else {
-            return calculatorConfigParser.getPeakShortJourneyPrice();
+            return configParser.getPeakShortJourneyPrice();
         }
     }
 
     private BigDecimal getShortOrLongOffPeakFare(Journey journey) {
         if(isLong(journey)) {
-            return calculatorConfigParser.getOffPeakLongJourneyPrice();
+            return configParser.getOffPeakLongJourneyPrice();
         } else {
-            return calculatorConfigParser.getOffPeakShortJourneyPrice();
+            return configParser.getOffPeakShortJourneyPrice();
         }
     }
 }

@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class CalculatorConfigReader {
+public class ConfigReader {
     private final String csvFile = "CalculatorConfig.csv";
     private HashMap<String,String> rawConstants = new HashMap<>();
 
-    public CalculatorConfigReader() {
+    public ConfigReader() {
         readConfigFile();
     }
 

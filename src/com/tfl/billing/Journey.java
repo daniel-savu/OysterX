@@ -6,8 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import static com.sun.tools.javac.util.Constants.format;
-
 
 public class Journey {
 
@@ -21,11 +19,11 @@ public class Journey {
     }
 
     public String formattedStartTime() {
-        return format(start.time());
+        return String.format("%s",start.time());
     }
 
     public String formattedEndTime() {
-        return format(end.time());
+        return String.format("%s",start.time());
     }
 
     public UUID originId() {

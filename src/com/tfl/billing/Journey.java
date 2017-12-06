@@ -2,7 +2,9 @@ package com.tfl.billing;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class Journey {
@@ -140,4 +142,22 @@ public class Journey {
         }
         return false;
     }
+
+
+    static List<Journey> transformJourneyEventsToJourneys(List<JourneyEvent> customerJourneyEvents) {
+        List<Journey> journeys = new ArrayList<Journey>();
+        JourneyEvent start = null;
+
+        for (JourneyEvent event : customerJourneyEvents) {
+            if (event instanceof JourneyStart) {
+                start = event;
+            }
+            if (event instanceof JourneyEnd && start != null) {
+                journeys.add(new Journey(start, event));
+                start = null;
+            }
+        }
+        return journeys;
+    }
+
 }

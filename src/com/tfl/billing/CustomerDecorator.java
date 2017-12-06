@@ -9,18 +9,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDecorator extends Customer {
-    boolean travelledOnPeakTime;
     Customer customer;
     Calculator calculator = new Calculator();
     Config config = new Config();
+    private boolean travelledOnPeakTime;
 
     public CustomerDecorator(Customer customer) {
         super(customer.fullName(), new OysterCard(customer.cardId().toString()));
         this.customer = customer;
+        travelledOnPeakTime = false;
     }
 
     public CustomerDecorator(String fullName, OysterCard oysterCard) {
         super(fullName, oysterCard);
+        travelledOnPeakTime = false;
     }
 
     void makePayment () {
@@ -31,7 +33,7 @@ public class CustomerDecorator extends Customer {
 
     List<Journey> getJourneys() {
         List<JourneyEvent> customerJourneyEvents = collectCustomerJourneyEvents();
-        return transformJourneyEventsToJourneys(customerJourneyEvents);
+        return Journey.transformJourneyEventsToJourneys(customerJourneyEvents);
     }
 
     List<JourneyEvent> collectCustomerJourneyEvents() {
@@ -44,30 +46,13 @@ public class CustomerDecorator extends Customer {
         return customerJourneyEvents;
     }
 
-    private List<Journey> transformJourneyEventsToJourneys(List<JourneyEvent> customerJourneyEvents) {
-        List<Journey> journeys = new ArrayList<Journey>();
-        JourneyEvent start = null;
-
-        for (JourneyEvent event : customerJourneyEvents) {
-            if (event instanceof JourneyStart) {
-                start = event;
-            }
-            if (event instanceof JourneyEnd && start != null) {
-                journeys.add(new Journey(start, event));
-                start = null;
-            }
-        }
-        return journeys;
-    }
-
     private BigDecimal getTotal(List<Journey> journeys) {
         BigDecimal customerTotal = new BigDecimal("0");
         BigDecimal priceOfJourney = null;
-        boolean customerTravelledOnPeakTime = false;
 
         for (Journey journey : journeys) {
             priceOfJourney = journey.getPrice();
-            customerTravelledOnPeakTime = journey.isPeakTime();
+            travelledOnPeakTime = journey.isPeakTime();
 
             try{
                 customerTotal = customerTotal.add(priceOfJourney);
@@ -76,7 +61,7 @@ public class CustomerDecorator extends Customer {
             }
         }
 
-        customerTotal = applyCapIfNeeded(customerTotal, customerTravelledOnPeakTime);
+        customerTotal = applyCapIfNeeded(customerTotal, travelledOnPeakTime);
         return customerTotal;
     }
 

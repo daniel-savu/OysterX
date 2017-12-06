@@ -1,11 +1,12 @@
 package com.tfl.billing;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import static com.sun.tools.javac.util.Constants.format;
 
 public class Journey {
 
@@ -18,20 +19,20 @@ public class Journey {
         this.end = end;
     }
 
-    public UUID originId() {
-        return start.readerId();
-    }
-
-    public UUID destinationId() {
-        return end.readerId();
-    }
-
     public String formattedStartTime() {
         return format(start.time());
     }
 
     public String formattedEndTime() {
         return format(end.time());
+    }
+
+    public UUID originId() {
+        return start.readerId();
+    }
+
+    public UUID destinationId() {
+        return end.readerId();
     }
 
     public Date startTime() {
@@ -44,14 +45,6 @@ public class Journey {
 
     public int durationSeconds() {
         return (int) ((end.time() - start.time()) / config.getMillisecondsInASecond());
-    }
-
-    public String durationMinutes() {
-        return "" + durationSeconds() / config.getSecondsInAMinute() + ":" + durationSeconds() % config.getSecondsInAMinute();
-    }
-
-    private String format(long time) {
-        return SimpleDateFormat.getInstance().format(new Date(time));
     }
 
     public BigDecimal getPrice() {
@@ -81,58 +74,17 @@ public class Journey {
     }
 
     public boolean isPeakTime() {
-        return isPeak(this.startTime()) || isPeak(this.endTime()) || isPeak(this.startTime(), this.endTime());
-    }
+        ArrayList<Peak> peaks = config.getPeaks();
 
-    public boolean isPeak(Date time) {
-        int hour = Calculator.getCurrentHour(time);
-        if (isMorningPeak(hour)) {
-            return true;
-        }
-        if (isEveningPeak(hour)) {
-            return true;
-        }
-        return false;
-    }
+        for (Peak peak : peaks) {
+            float journeyStartTime = Calculator.dateTimeToFloatTime(this.startTime());
+            float journeyEndTime = Calculator.dateTimeToFloatTime(this.endTime());
+            if (peak.contains(journeyStartTime) || peak.contains(journeyEndTime) || peak.isContainedInJourney(journeyEndTime,journeyEndTime)) {
+                return true;
+            }
 
-    public boolean isPeak(Date timeStart, Date timeEnd) {
-        int hourStart = Calculator.getCurrentHour(timeStart);
-        int hourEnd = Calculator.getCurrentHour(timeEnd);
+        }
 
-        if (containsMorningPeak(hourStart, hourEnd)) {
-            return true;
-        }
-        if (containsEveningPeak(hourStart, hourEnd)) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isMorningPeak(int hour) {
-        if (hour >= config.getMorningPeakStart() && hour < config.getMorningPeakEnd()) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isEveningPeak(int hour) {
-        if (hour >= config.getEveningPeakStart() && hour < config.getEveningPeakEnd()) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean containsMorningPeak(int hourStart, int hourEnd) {
-        if (hourStart <= config.getMorningPeakStart() && hourEnd >= config.getMorningPeakEnd()) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean containsEveningPeak(int hourStart, int hourEnd) {
-        if (hourStart <= config.getEveningPeakStart() && hourEnd >= config.getEveningPeakEnd()) {
-            return true;
-        }
         return false;
     }
 

@@ -17,4 +17,18 @@ public class Calculator {
     public static BigDecimal roundToNearestPenny(BigDecimal poundsAndPence) {
         return poundsAndPence.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
+
+    public static float stringTimeToFloatTime(String time) {
+        final String timeSeparator = ":";
+        String[] timeComponents = time.split(timeSeparator);
+        float hour = Float.parseFloat(timeComponents[0]);
+        float minute = Float.parseFloat(timeComponents[1]);
+        return (float) (hour + (minute/60.0));
+    }
+
+    public static float dateTimeToFloatTime(Date time) {
+        int hour = time.getHours();
+        int minutes = time.getMinutes();
+        return (float) hour + (minutes/60);
+    }
 }

@@ -59,7 +59,7 @@ public class JourneyTests {
             if (e instanceof JourneyEndIsBeforeStartException) {
                 assertTrue (journey.endTime ().before (journey.startTime ()));
             }else{
-                fail ("Your journey can't End before it Starts!");
+                fail ("Journey Ends before it Starts!");
             }
         }
     }

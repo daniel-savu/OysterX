@@ -1,6 +1,7 @@
 package com.tfl.billing;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Config {
@@ -11,15 +12,13 @@ public class Config {
     private final BigDecimal offPeakShortJourneyPrice;
     private final int longJourneyDurationInMinutes;
     private final int secondsInAMinute;
-    private final int morningPeakStart;
-    private final int morningPeakEnd;
-    private final int eveningPeakStart;
-    private final int eveningPeakEnd;
     private final BigDecimal offPeakCap;
     private final BigDecimal peakCap;
 
     private final int millisecondsInASecond;
     private HashMap<String, String> rawConstants = new HashMap<>();
+
+    private ArrayList<Peak> peaks = new ArrayList<>();
 
     public Config() {
         ConfigReader configReader = new ConfigReader();
@@ -43,18 +42,6 @@ public class Config {
         String rawSecondsInAMinute = rawConstants.get("SECONDS_IN_A_MINUTE");
         secondsInAMinute = Integer.parseInt(rawSecondsInAMinute);
 
-        String rawMorningPeakStart = rawConstants.get("MORNING_PEAK_START");
-        morningPeakStart = Integer.parseInt(rawMorningPeakStart);
-
-        String rawMorningPeakEnd = rawConstants.get("MORNING_PEAK_END");
-        morningPeakEnd = Integer.parseInt(rawMorningPeakEnd);
-
-        String rawEveningPeakStart = rawConstants.get("EVENING_PEAK_START");
-        eveningPeakStart = Integer.parseInt(rawEveningPeakStart);
-
-        String rawEveningPeakEnd = rawConstants.get("EVENING_PEAK_END");
-        eveningPeakEnd = Integer.parseInt(rawEveningPeakEnd);
-
         String rawOffPeakCap = rawConstants.get("OFF_PEAK_CAP");
         offPeakCap = new BigDecimal(rawOffPeakCap);
 
@@ -63,6 +50,16 @@ public class Config {
 
         String rawMillisecondsInASecond = rawConstants.get("MILLISECONDS_IN_A_SECOND");
         millisecondsInASecond = Integer.parseInt(rawMillisecondsInASecond);
+
+
+        for (String key : rawConstants.keySet()) {
+            if (key.contains("_PEAK_START")) {
+                String name = key.substring(0, key.indexOf("_PEAK_START"));
+                String endKey = name + "_PEAK_END";
+                Peak peak = new Peak(rawConstants.get(key), rawConstants.get(endKey));
+                peaks.add(peak);
+            }
+        }
     }
 
     public BigDecimal getPeakLongJourneyPrice() {
@@ -89,21 +86,6 @@ public class Config {
         return secondsInAMinute;
     }
 
-    public int getMorningPeakStart() {
-        return morningPeakStart;
-    }
-
-    public int getMorningPeakEnd() {
-        return morningPeakEnd;
-    }
-
-    public int getEveningPeakStart() {
-        return eveningPeakStart;
-    }
-
-    public int getEveningPeakEnd() {
-        return eveningPeakEnd;
-    }
 
     public BigDecimal getOffPeakCap() {
         return offPeakCap;
@@ -115,5 +97,9 @@ public class Config {
 
     public int getMillisecondsInASecond() {
         return millisecondsInASecond;
+    }
+
+    public ArrayList<Peak> getPeaks() {
+        return peaks;
     }
 }

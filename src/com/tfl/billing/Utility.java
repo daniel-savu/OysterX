@@ -8,7 +8,10 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Utility {
-    private static Config config = new Config();
+
+    private Utility() {
+
+    }
 
     public static int getCurrentHour(Date time) {
         Calendar calendar = Calendar.getInstance();
@@ -22,12 +25,12 @@ public class Utility {
 
     public static float stringTimeToFloatTime(String time) {
         final String timeSeparator = ":";
-        System.out.println(time);
+
         if(!time.contains(timeSeparator)) {
             throw new WrongTimeFormatException();
         }
         String[] timeComponents = time.split(timeSeparator);
-        if (timeComponents.length != config.getNumberOfTimeComponents()) {
+        if (timeComponents.length != 3) {
             throw new WrongTimeFormatException();
         }
         float hour = Float.parseFloat(timeComponents[0]);

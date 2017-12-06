@@ -16,15 +16,6 @@ public class TravelTrackerTests {
     private UUID readerOriginID = UUID.randomUUID();
     private UUID readerDestinationID = UUID.randomUUID();
 
-    public TravelTrackerTests() throws NoSuchMethodException {
-    }
-
-
-    @Rule
-    public JUnitRuleMockery context = new JUnitRuleMockery();
-
-
-
     TravelTracker travelTracker = new TravelTracker();
 
     @Test
@@ -36,7 +27,6 @@ public class TravelTrackerTests {
         } catch(Exception e) {
             Assert.assertTrue(e.getClass().getCanonicalName().equals("com.tfl.billing.UnknownOysterCardException"));
         }
-
     }
 
     @Test
@@ -47,9 +37,7 @@ public class TravelTrackerTests {
 
         } catch(Exception e) {
             fail("UnknownOysterCardException not thrown");
-
         }
-
     }
 
 

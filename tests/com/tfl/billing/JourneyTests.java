@@ -28,10 +28,6 @@ public class JourneyTests {
         journey = new Journey(journeyStart, journeyEnd);
     }
 
-    @Rule
-    public JUnitRuleMockery context = new JUnitRuleMockery();
-
-
 
     @Test
     public void journeyStartStaionIdEqualsOriginId() throws InterruptedException {
@@ -154,7 +150,6 @@ public class JourneyTests {
         createTestJourneyWithStartTimeAndEndTime("12:00:00","12:40:00");
         Assert.assertEquals(new BigDecimal("2.7"), journey.getPrice());
     }
-
 
     @Test
     public void longPeakJourneyPriceIsCorrect() throws InterruptedException {

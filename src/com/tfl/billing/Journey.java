@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-
 public class Journey {
 
     private final JourneyEvent start;

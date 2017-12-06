@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ConfigReader {
-    private final String csvFile = "Config.csv";
+    private static final String CSV_FILE = "Config.csv";
     private HashMap<String,String> rawConstants = new HashMap<>();
 
     public ConfigReader() {
@@ -16,10 +16,9 @@ public class ConfigReader {
 
     private void readConfigFile() {
         FileReader fileReader = openConfigFile();
-        BufferedReader br = new BufferedReader(fileReader);
         String cvsSeparator = ",";
         String csvRow;
-        try {
+        try(BufferedReader br = new BufferedReader(fileReader);) {
             while ((csvRow = br.readLine()) != null) {
                 String[] configLine = csvRow.split(cvsSeparator);
                 putRowValuesInHashMap(configLine);
@@ -31,8 +30,7 @@ public class ConfigReader {
 
     private FileReader openConfigFile() {
         try {
-            FileReader fileReader = new FileReader(csvFile);
-            return fileReader;
+            return new FileReader(CSV_FILE);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return null;

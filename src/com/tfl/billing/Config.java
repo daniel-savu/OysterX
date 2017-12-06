@@ -62,44 +62,44 @@ public class Config {
         }
     }
 
-    public BigDecimal getPeakLongJourneyPrice() {
+    BigDecimal getPeakLongJourneyPrice() {
         return peakLongJourneyPrice;
     }
 
-    public BigDecimal getPeakShortJourneyPrice() {
+    BigDecimal getPeakShortJourneyPrice() {
         return peakShortJourneyPrice;
     }
 
-    public BigDecimal getOffPeakLongJourneyPrice() {
+    BigDecimal getOffPeakLongJourneyPrice() {
         return offPeakLongJourneyPrice;
     }
 
-    public BigDecimal getOffPeakShortJourneyPrice() {
+    BigDecimal getOffPeakShortJourneyPrice() {
         return offPeakShortJourneyPrice;
     }
 
-    public int getLongJourneyDurationInMinutes() {
+    int getLongJourneyDurationInMinutes() {
         return longJourneyDurationInMinutes;
     }
 
-    public int getSecondsInAMinute() {
+    int getSecondsInAMinute() {
         return secondsInAMinute;
     }
 
 
-    public BigDecimal getOffPeakCap() {
+    BigDecimal getOffPeakCap() {
         return offPeakCap;
     }
 
-    public BigDecimal getPeakCap() {
+    BigDecimal getPeakCap() {
         return peakCap;
     }
 
-    public int getMillisecondsInASecond() {
+    int getMillisecondsInASecond() {
         return millisecondsInASecond;
     }
 
-    public ArrayList<Peak> getPeaks() {
+    ArrayList<Peak> getPeaks() {
         return peaks;
     }
 }

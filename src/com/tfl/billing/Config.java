@@ -3,6 +3,7 @@ package com.tfl.billing;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Config {
 
@@ -52,11 +53,13 @@ public class Config {
         millisecondsInASecond = Integer.parseInt(rawMillisecondsInASecond);
 
 
-        for (String key : rawConstants.keySet()) {
+        for (HashMap.Entry<String, String> rawConstant : rawConstants.entrySet()) {
+            String key = rawConstant.getKey();
+            String value = rawConstant.getValue();
             if (key.contains("_PEAK_START")) {
-                String name = key.substring(0, key.indexOf("_PEAK_START"));
-                String endKey = name + "_PEAK_END";
-                Peak peak = new Peak(rawConstants.get(key), rawConstants.get(endKey));
+                String peakName = key.substring(0, key.indexOf("_PEAK_START"));
+                String endKey = peakName + "_PEAK_END";
+                Peak peak = new Peak(value, rawConstants.get(endKey));
                 peaks.add(peak);
             }
         }
@@ -99,7 +102,7 @@ public class Config {
         return millisecondsInASecond;
     }
 
-    ArrayList<Peak> getPeaks() {
+    public List<Peak> getPeaks() {
         return peaks;
     }
 }

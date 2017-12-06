@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Calculator {
+public class Utility {
 
     Config config = new Config();
 

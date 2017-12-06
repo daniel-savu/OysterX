@@ -6,8 +6,8 @@ public class Peak {
     private final float endTime;
 
     public Peak(String startTime, String endTime) {
-        this.startTime = Calculator.stringTimeToFloatTime(startTime);
-        this.endTime = Calculator.stringTimeToFloatTime(endTime);
+        this.startTime = Utility.stringTimeToFloatTime(startTime);
+        this.endTime = Utility.stringTimeToFloatTime(endTime);
     }
 
     public boolean contains(float journeyTime) {

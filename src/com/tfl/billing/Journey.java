@@ -75,16 +75,14 @@ public class Journey {
 
     public boolean isPeakTime() {
         ArrayList<Peak> peaks = config.getPeaks();
-
         for (Peak peak : peaks) {
-            float journeyStartTime = Calculator.dateTimeToFloatTime(this.startTime());
-            float journeyEndTime = Calculator.dateTimeToFloatTime(this.endTime());
+            float journeyStartTime = Utility.dateTimeToFloatTime(this.startTime());
+            float journeyEndTime = Utility.dateTimeToFloatTime(this.endTime());
             if (peak.contains(journeyStartTime) || peak.contains(journeyEndTime) || peak.isContainedInJourney(journeyStartTime,journeyEndTime)) {
                 return true;
             }
 
         }
-
         return false;
     }
 

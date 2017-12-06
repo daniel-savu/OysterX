@@ -162,6 +162,4 @@ public class JourneyTests {
         Assert.assertEquals(new BigDecimal("3.8"), journey.getPrice());
     }
 
-
-
 }

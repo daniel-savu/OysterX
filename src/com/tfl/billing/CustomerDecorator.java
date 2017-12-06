@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CustomerDecorator extends Customer {
     Customer customer;
-    Calculator calculator = new Calculator();
+    Utility utility = new Utility();
     Config config = new Config();
     private boolean travelledOnPeakTime;
 
@@ -66,7 +66,7 @@ public class CustomerDecorator extends Customer {
     }
 
     private void manageTransaction (List<Journey> journeys, BigDecimal customerTotal) {
-        PaymentsSystem.getInstance().charge(customer, journeys, calculator.roundToNearestPenny(customerTotal));
+        PaymentsSystem.getInstance().charge(customer, journeys, utility.roundToNearestPenny(customerTotal));
     }
 
     private BigDecimal applyCapIfNeeded(BigDecimal customerTotal, boolean customerTravelledOnPeakTime) {

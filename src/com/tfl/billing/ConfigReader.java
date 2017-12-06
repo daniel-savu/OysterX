@@ -37,7 +37,7 @@ public class ConfigReader {
         }
     }
 
-    void putRowValuesInHashMap(String[] configLine) {
+    private void putRowValuesInHashMap(String[] configLine) {
         if (configLine.length > 1) {
             String constantName = configLine[0].trim().replaceAll("\uFEFF", "");
             String constantValue = configLine[1].trim().replaceAll("\uFEFF", "");

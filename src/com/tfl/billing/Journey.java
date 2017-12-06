@@ -18,11 +18,11 @@ public class Journey {
     }
 
     public String formattedStartTime() {
-        return String.format("%s",start.time());
+        return String.format("%s", start.time());
     }
 
     public String formattedEndTime() {
-        return String.format("%s",start.time());
+        return String.format("%s", start.time());
     }
 
     public UUID originId() {
@@ -47,7 +47,7 @@ public class Journey {
 
     public BigDecimal getPrice() {
         BigDecimal journeyPrice;
-        if(this.isPeakTime()){
+        if(this.isPeakTime()) {
             journeyPrice = this.getShortOrLongPeakFare();
         } else {
             journeyPrice = this.getShortOrLongOffPeakFare();
@@ -79,7 +79,6 @@ public class Journey {
             if (peak.contains(journeyStartTime) || peak.contains(journeyEndTime) || peak.isContainedInJourney(journeyStartTime,journeyEndTime)) {
                 return true;
             }
-
         }
         return false;
     }

@@ -36,7 +36,7 @@ public class CustomerDecorator extends Customer {
         return Journey.transformJourneyEventsToJourneys(customerJourneyEvents);
     }
 
-    List<JourneyEvent> collectCustomerJourneyEvents() {
+    private List<JourneyEvent> collectCustomerJourneyEvents() {
         List<JourneyEvent> customerJourneyEvents = new ArrayList<JourneyEvent>();
         for (JourneyEvent journeyEvent : TravelTracker.eventLog) {
             if (journeyEvent.cardId().equals(customer.cardId())) {

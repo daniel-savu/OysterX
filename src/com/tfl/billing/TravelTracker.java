@@ -8,8 +8,8 @@ import java.util.*;
 public class TravelTracker implements ScanListener {
 
 
-    static final List<JourneyEvent> eventLog = new ArrayList<JourneyEvent>();
-    private final Set<UUID> currentlyTravelling = new HashSet<UUID>();
+    static final List<JourneyEvent> eventLog = new ArrayList<>();
+    private final Set<UUID> currentlyTravelling = new HashSet<>();
 
 
 

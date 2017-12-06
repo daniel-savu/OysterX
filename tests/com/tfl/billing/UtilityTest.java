@@ -33,7 +33,6 @@ public class UtilityTest {
         } catch(Exception e) {
             Assert.assertTrue(e.getClass().getCanonicalName().equals("com.tfl.billing.WrongTimeFormatException"));
         }
-
     }
 
     @Test

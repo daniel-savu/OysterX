@@ -150,7 +150,6 @@ public class JourneyTests {
         Assert.assertEquals(new BigDecimal("2.7"), journey.getPrice());
     }
 
-
     @Test
     public void longPeakJourneyPriceIsCorrect() throws InterruptedException {
         createTestJourneyWithStartTimeAndEndTime("08:00:00","08:40:00");

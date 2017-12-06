@@ -14,10 +14,6 @@ public class TravelTrackerTests {
     private UUID readerOriginID = UUID.randomUUID();
     private UUID readerDestinationID = UUID.randomUUID();
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6850dbff9bbd8fadca44374118c6c5560a988f35
     TravelTracker travelTracker = new TravelTracker();
 
     @Test

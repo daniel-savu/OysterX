@@ -20,7 +20,7 @@ public class JourneyTests {
     private JourneyEnd journeyEnd;
     private Journey journey;
 
-    void createTestJourneyWithStartTimeAndEndTime(String humanReadableStartTime, String humanReadableEndTime) throws InterruptedException {
+    public void createTestJourneyWithStartTimeAndEndTime(String humanReadableStartTime, String humanReadableEndTime) throws InterruptedException {
         long startTime = Utility.dateFormatterToLong(humanReadableStartTime);
         long endTime = Utility.dateFormatterToLong(humanReadableEndTime);
         journeyStart = new JourneyStart(cardExampleID, readerOriginID, startTime);

@@ -28,9 +28,9 @@ public class UtilityTest {
     public void stringTimeToFloatTimeMethodTakesWrongInputStringTimeThrowsWrongTimeSeparatorException() {
         try {
             Utility.stringTimeToFloatTime("12;00:00");
-            fail("WrongTimeSeparatorException not thrown");
+            fail("WrongTimeFormatException not thrown");
         } catch(Exception e) {
-            Assert.assertTrue(e.getClass().getCanonicalName().equals("com.tfl.billing.WrongTimeSeparatorException"));
+            Assert.assertTrue(e.getClass().getCanonicalName().equals("com.tfl.billing.WrongTimeFormatException"));
         }
 
     }

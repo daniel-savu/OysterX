@@ -21,7 +21,7 @@ public class Utility {
     public static float stringTimeToFloatTime(String time) throws WrongTimeSeparatorException {
         final String timeSeparator = ":";
         String[] timeComponents = time.split(timeSeparator);
-        if (timeComponents.length == 1) {
+        if (timeComponents.length != 3) {
             throw new WrongTimeSeparatorException();
         }
         float hour = Float.parseFloat(timeComponents[0]);

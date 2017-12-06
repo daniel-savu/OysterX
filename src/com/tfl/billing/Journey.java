@@ -1,5 +1,6 @@
 package com.tfl.billing;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -9,7 +10,6 @@ public class Journey {
     private final JourneyEvent start;
     private final JourneyEvent end;
     Config config = new Config();
-
 
     public Journey(JourneyEvent start, JourneyEvent end) {
         this.start = start;
@@ -50,5 +50,94 @@ public class Journey {
 
     private String format(long time) {
         return SimpleDateFormat.getInstance().format(new Date(time));
+    }
+
+    public BigDecimal getPrice() {
+        BigDecimal journeyPrice;
+        if(this.isPeakTime()){
+            journeyPrice = this.getShortOrLongPeakFare();
+        } else {
+            journeyPrice = this.getShortOrLongOffPeakFare();
+        }
+        return journeyPrice;
+    }
+
+    private BigDecimal getShortOrLongPeakFare() {
+        if(this.isLong()) {
+            return config.getPeakLongJourneyPrice();
+        } else {
+            return config.getPeakShortJourneyPrice();
+        }
+    }
+
+    private BigDecimal getShortOrLongOffPeakFare() {
+        if(this.isLong()) {
+            return config.getOffPeakLongJourneyPrice();
+        } else {
+            return config.getOffPeakShortJourneyPrice();
+        }
+    }
+
+    public boolean isPeakTime() {
+        return isPeak(this.startTime()) || isPeak(this.endTime()) || isPeak(this.startTime(), this.endTime());
+    }
+
+    public boolean isPeak(Date time) {
+        int hour = Calculator.getCurrentHour(time);
+        if (isMorningPeak(hour)) {
+            return true;
+        }
+        if (isEveningPeak(hour)) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isPeak(Date timeStart, Date timeEnd) {
+        int hourStart = Calculator.getCurrentHour(timeStart);
+        int hourEnd = Calculator.getCurrentHour(timeEnd);
+
+        if (containsMorningPeak(hourStart, hourEnd)) {
+            return true;
+        }
+        if (containsEveningPeak(hourStart, hourEnd)) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isMorningPeak(int hour) {
+        if (hour >= config.getMorningPeakStart() && hour < config.getMorningPeakEnd()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isEveningPeak(int hour) {
+        if (hour >= config.getEveningPeakStart() && hour < config.getEveningPeakEnd()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean containsMorningPeak(int hourStart, int hourEnd) {
+        if (hourStart <= config.getMorningPeakStart() && hourEnd >= config.getMorningPeakEnd()) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean containsEveningPeak(int hourStart, int hourEnd) {
+        if (hourStart <= config.getEveningPeakStart() && hourEnd >= config.getEveningPeakEnd()) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isLong(){
+        if(this.durationSeconds() > config.getLongJourneyDurationInMinutes() * config.getSecondsInAMinute()) {
+            return true;
+        }
+        return false;
     }
 }

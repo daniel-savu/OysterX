@@ -79,7 +79,7 @@ public class Journey {
         for (Peak peak : peaks) {
             float journeyStartTime = Calculator.dateTimeToFloatTime(this.startTime());
             float journeyEndTime = Calculator.dateTimeToFloatTime(this.endTime());
-            if (peak.contains(journeyStartTime) || peak.contains(journeyEndTime) || peak.isContainedInJourney(journeyEndTime,journeyEndTime)) {
+            if (peak.contains(journeyStartTime) || peak.contains(journeyEndTime) || peak.isContainedInJourney(journeyStartTime,journeyEndTime)) {
                 return true;
             }
 

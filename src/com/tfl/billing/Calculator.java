@@ -27,8 +27,8 @@ public class Calculator {
     }
 
     public static float dateTimeToFloatTime(Date time) {
-        int hour = time.getHours();
-        int minutes = time.getMinutes();
-        return (float) hour + (minutes/60);
+        float hour = time.getHours();
+        float minutes = time.getMinutes();
+        return (float) ((float) hour + (minutes/60.0));
     }
 }

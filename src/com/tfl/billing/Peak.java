@@ -11,14 +11,14 @@ public class Peak {
     }
 
     public boolean contains(float journeyTime) {
-        if (journeyTime > startTime && journeyTime < endTime) {
+        if (journeyTime >= startTime && journeyTime <= endTime) {
             return true;
         }
         return false;
     }
 
     public boolean isContainedInJourney(float journeyStartTime, float journeyEndTime) {
-        if (journeyStartTime < startTime && journeyEndTime > endTime) {
+        if (journeyStartTime <= startTime && journeyEndTime >= endTime) {
             return true;
         }
         return false;

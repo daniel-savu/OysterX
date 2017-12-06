@@ -40,9 +40,11 @@ public class ConfigReader {
     }
 
     void putRowValuesInHashMap(String[] configLine) {
-        String constantName = configLine[0].trim().replaceAll("\uFEFF", "");
-        String constantValue = configLine[1].trim().replaceAll("\uFEFF", "");
-        rawConstants.put(constantName, constantValue);
+        if (configLine.length > 1) {
+            String constantName = configLine[0].trim().replaceAll("\uFEFF", "");
+            String constantValue = configLine[1].trim().replaceAll("\uFEFF", "");
+            rawConstants.put(constantName, constantValue);
+        }
     }
 
     HashMap<String,String> getRawConstants() {

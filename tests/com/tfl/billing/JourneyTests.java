@@ -21,8 +21,8 @@ public class JourneyTests {
     private Journey journey;
 
     void createTestJourneyWithStartTimeAndEndTime(String humanReadableStartTime, String humanReadableEndTime) throws InterruptedException {
-        long startTime = DateFormatter.format(humanReadableStartTime);
-        long endTime = DateFormatter.format(humanReadableEndTime);
+        long startTime = Utility.dateFormatterToLong(humanReadableStartTime);
+        long endTime = Utility.dateFormatterToLong(humanReadableEndTime);
         journeyStart = new JourneyStart(cardExampleID, readerOriginID, startTime);
         journeyEnd = new JourneyEnd(cardExampleID, readerDestinationID, endTime);
         journey = new Journey(journeyStart, journeyEnd);

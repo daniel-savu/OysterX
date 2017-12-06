@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import static com.sun.tools.javac.util.Constants.format;
 
+
 public class Journey {
 
     private final JourneyEvent start;
@@ -87,22 +88,19 @@ public class Journey {
     }
 
     public boolean isLong(){
-        if(this.durationSeconds() > config.getLongJourneyDurationInMinutes() * config.getSecondsInAMinute()) {
-            return true;
-        }
-        return false;
+        return (this.durationSeconds() > config.getLongJourneyDurationInMinutes() * config.getSecondsInAMinute());
     }
 
 
     static List<Journey> transformJourneyEventsToJourneys(List<JourneyEvent> customerJourneyEvents) {
-        List<Journey> journeys = new ArrayList<Journey>();
+        List<Journey> journeys = new ArrayList<>();
         JourneyEvent start = null;
 
         for (JourneyEvent event : customerJourneyEvents) {
             if (event instanceof JourneyStart) {
                 start = event;
             }
-            if (event instanceof JourneyEnd && start != null) {
+            if (event instanceof JourneyEnd) {
                 journeys.add(new Journey(start, event));
                 start = null;
             }

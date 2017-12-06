@@ -18,9 +18,12 @@ public class Utility {
         return poundsAndPence.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
-    public static float stringTimeToFloatTime(String time) {
+    public static float stringTimeToFloatTime(String time) throws WrongTimeSeparatorException {
         final String timeSeparator = ":";
         String[] timeComponents = time.split(timeSeparator);
+        if (timeComponents.length == 1) {
+            throw new WrongTimeSeparatorException();
+        }
         float hour = Float.parseFloat(timeComponents[0]);
         float minute = Float.parseFloat(timeComponents[1]);
         return (float) (hour + (minute/60.0));

@@ -102,7 +102,7 @@ public class Journey {
             if (event instanceof JourneyStart) {
                 start = event;
             }
-            if (event instanceof JourneyEnd && start != null) {
+            if (event instanceof JourneyEnd) {
                 journeys.add(new Journey(start, event));
                 start = null;
             }

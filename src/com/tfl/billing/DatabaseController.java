@@ -13,19 +13,18 @@ public class DatabaseController {
 
     }
 
-    public static List<Customer> getCustomers() {
-        CustomerDatabase customerDatabase = CustomerDatabase.getInstance();
-        return customerDatabase.getCustomers();
-    }
-
     public static List<CustomerDecorator> getCustomerDecorators() {
-        CustomerDatabase customerDatabase = CustomerDatabase.getInstance();
-        List<Customer> customers = customerDatabase.getCustomers();
+        List<Customer> customers = getCustomers();
         List<CustomerDecorator> customerDecorators = new ArrayList<>();
         for (Customer customer : customers) {
             customerDecorators.add(new CustomerDecorator(customer));
         }
         return customerDecorators;
+    }
+
+    public static List<Customer> getCustomers() {
+        CustomerDatabase customerDatabase = CustomerDatabase.getInstance();
+        return customerDatabase.getCustomers();
     }
 
     public static boolean isCardIdRegistered(UUID cardId) {

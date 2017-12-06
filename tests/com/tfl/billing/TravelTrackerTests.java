@@ -28,8 +28,8 @@ public class TravelTrackerTests {
     }
 
 
-    // Might sometimes fail just because it does not match the oyster card id. Just as it
-    // throws a runtime error when running the example because of the same reason.
+    // Might sometimes fail just because it does not match the oyster card id. Just as the example
+    // class throws a runtime error when running it because of the same reason^.
     @Test
     public void scanningKnownCardIDDoesNotThrowException() {
         UUID knownOysterCardID = UUID.fromString("89adbd1c-4de6-40e5-98bc-b3315c6873f2");

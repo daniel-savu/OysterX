@@ -11,16 +11,10 @@ public class Peak {
     }
 
     boolean contains(float journeyTime) {
-        if (journeyTime >= startTime && journeyTime <= endTime) {
-            return true;
-        }
-        return false;
+        return (journeyTime >= startTime && journeyTime <= endTime);
     }
 
     boolean isContainedInJourney(float journeyStartTime, float journeyEndTime) {
-        if (journeyStartTime <= startTime && journeyEndTime >= endTime) {
-            return true;
-        }
-        return false;
+        return (journeyStartTime <= startTime && journeyEndTime >= endTime);
     }
 }

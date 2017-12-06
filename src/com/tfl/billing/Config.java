@@ -3,7 +3,6 @@ package com.tfl.billing;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Config {
 
@@ -102,7 +101,7 @@ public class Config {
         return millisecondsInASecond;
     }
 
-    public List<Peak> getPeaks() {
+    public ArrayList<Peak> getPeaks() {
         return peaks;
     }
 }

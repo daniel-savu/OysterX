@@ -10,7 +10,6 @@ import java.util.List;
 
 public class CustomerDecorator extends Customer {
     Customer customer;
-    Utility utility = new Utility();
     Config config = new Config();
     private boolean travelledOnPeakTime;
 
@@ -37,7 +36,7 @@ public class CustomerDecorator extends Customer {
     }
 
     private List<JourneyEvent> collectCustomerJourneyEvents() {
-        List<JourneyEvent> customerJourneyEvents = new ArrayList<JourneyEvent>();
+        List<JourneyEvent> customerJourneyEvents = new ArrayList<>();
         for (JourneyEvent journeyEvent : TravelTracker.eventLog) {
             if (journeyEvent.cardId().equals(customer.cardId())) {
                 customerJourneyEvents.add(journeyEvent);
@@ -57,7 +56,7 @@ public class CustomerDecorator extends Customer {
             try{
                 customerTotal = customerTotal.add(priceOfJourney);
             } catch(Exception e) {
-                System.out.println(e.getMessage());
+                e.printStackTrace();
             }
         }
 
@@ -66,7 +65,7 @@ public class CustomerDecorator extends Customer {
     }
 
     private void manageTransaction (List<Journey> journeys, BigDecimal customerTotal) {
-        PaymentsSystem.getInstance().charge(customer, journeys, utility.roundToNearestPenny(customerTotal));
+        PaymentsSystem.getInstance().charge(customer, journeys, Utility.roundToNearestPenny(customerTotal));
     }
 
     private BigDecimal applyCapIfNeeded(BigDecimal customerTotal, boolean customerTravelledOnPeakTime) {

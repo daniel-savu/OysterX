@@ -21,7 +21,7 @@ public class Utility {
         return poundsAndPence.setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
-    public static float stringTimeToFloatTime(String time) throws WrongTimeSeparatorException {
+    public static float stringTimeToFloatTime(String time) {
         final String timeSeparator = ":";
         String[] timeComponents = time.split(timeSeparator);
         if (timeComponents.length != 3) {
@@ -35,7 +35,7 @@ public class Utility {
     public static float dateTimeToFloatTime(Date time) {
         float hour = time.getHours();
         float minutes = time.getMinutes();
-        return (float) ((float) hour + (minutes/60.0));
+        return (float) (hour + (minutes/60.0));
     }
 
     static long dateFormatterToLong(String humanReadableTime) {

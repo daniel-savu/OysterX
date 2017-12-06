@@ -1,6 +1,5 @@
 package com.tfl.billing;
 
-import com.oyster.OysterCard;
 import com.tfl.external.Customer;
 import com.tfl.external.CustomerDatabase;
 
@@ -9,6 +8,10 @@ import java.util.List;
 import java.util.UUID;
 
 public class DatabaseController {
+
+    private DatabaseController() {
+
+    }
 
     public static List<Customer> getCustomers() {
         CustomerDatabase customerDatabase = CustomerDatabase.getInstance();

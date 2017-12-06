@@ -1,6 +1,9 @@
 package com.tfl.billing;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,4 +37,16 @@ public class Utility {
         float minutes = time.getMinutes();
         return (float) ((float) hour + (minutes/60.0));
     }
+
+    static long dateFormatterToLong(String humanReadableTime) {
+        DateFormat formatter = new SimpleDateFormat("hh:mm:ss");
+        try {
+            Date date = formatter.parse(humanReadableTime);
+            return date.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }
+

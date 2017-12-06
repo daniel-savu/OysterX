@@ -37,13 +37,13 @@ public class UtilityTest {
 
     @Test
     public void dateTimeToFloatTime() {
-        Date date = new Date(DateFormatter.format("13:00:00"));
+        Date date = new Date(Utility.dateFormatterToLong("13:00:00"));
         Assert.assertEquals(13.0,Utility.dateTimeToFloatTime(date),0);
     }
 
     @Test
     public void thirtyMinutesDateTimeToPointFiveInFloatTime() {
-        Date date = new Date(DateFormatter.format("13:30:00"));
+        Date date = new Date(Utility.dateFormatterToLong("13:30:00"));
         Assert.assertEquals(13.5,Utility.dateTimeToFloatTime(date),0);
     }
 

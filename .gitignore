@@ -6,3 +6,6 @@ out/
 
 #Log file
 *.log
+
+#Workspace.xml
+*.xml

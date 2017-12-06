@@ -1,13 +1,12 @@
 package com.tfl.billing;
 
-import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
+import static com.tfl.billing.Utility.dateFormatterToLong;
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
 
@@ -21,16 +20,12 @@ public class JourneyTests {
     private Journey journey;
 
     public void createTestJourneyWithStartTimeAndEndTime(String humanReadableStartTime, String humanReadableEndTime) throws InterruptedException {
-        long startTime = Utility.dateFormatterToLong(humanReadableStartTime);
-        long endTime = Utility.dateFormatterToLong(humanReadableEndTime);
+        long startTime = dateFormatterToLong(humanReadableStartTime);
+        long endTime = dateFormatterToLong(humanReadableEndTime);
         journeyStart = new JourneyStart(cardExampleID, readerOriginID, startTime);
         journeyEnd = new JourneyEnd(cardExampleID, readerDestinationID, endTime);
         journey = new Journey(journeyStart, journeyEnd);
     }
-
-    @Rule
-    public JUnitRuleMockery context = new JUnitRuleMockery();
-
 
 
     @Test

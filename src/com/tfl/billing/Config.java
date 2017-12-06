@@ -15,8 +15,6 @@ public class Config {
     private final BigDecimal offPeakCap;
     private final BigDecimal peakCap;
 
-    private final int numberOfTimeComponents;
-
     private final int millisecondsInASecond;
     private HashMap<String, String> rawConstants = new HashMap<>();
 
@@ -52,10 +50,6 @@ public class Config {
 
         String rawMillisecondsInASecond = rawConstants.get("MILLISECONDS_IN_A_SECOND");
         millisecondsInASecond = Integer.parseInt(rawMillisecondsInASecond);
-
-        String rawNumberOfTimeComponents = rawConstants.get("NUMBER_OF_TIME_COMPONENTS");
-        numberOfTimeComponents = Integer.parseInt(rawNumberOfTimeComponents);
-        System.out.println(numberOfTimeComponents);
 
         for (HashMap.Entry<String, String> rawConstant : rawConstants.entrySet()) {
             String key = rawConstant.getKey();
@@ -110,7 +104,4 @@ public class Config {
         return peaks;
     }
 
-    public int getNumberOfTimeComponents() {
-        return numberOfTimeComponents;
-    }
 }

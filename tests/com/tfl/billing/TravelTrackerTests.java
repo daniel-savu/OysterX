@@ -1,8 +1,6 @@
 package com.tfl.billing;
 
-import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -15,14 +13,6 @@ public class TravelTrackerTests {
     private UUID cardExampleID = UUID.randomUUID();
     private UUID readerOriginID = UUID.randomUUID();
     private UUID readerDestinationID = UUID.randomUUID();
-
-    public TravelTrackerTests() throws NoSuchMethodException {
-    }
-
-
-    @Rule
-    public JUnitRuleMockery context = new JUnitRuleMockery();
-
 
 
     TravelTracker travelTracker = new TravelTracker();
@@ -39,6 +29,9 @@ public class TravelTrackerTests {
 
     }
 
+
+    // Might sometimes fail just because it does not match the oyster card id. Just as it
+    // throws a runtime error when running the example because of the same reason.
     @Test
     public void scanningKnownCardIDDoesNotThrowException() {
         UUID knownOysterCardID = UUID.fromString("89adbd1c-4de6-40e5-98bc-b3315c6873f2");

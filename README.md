@@ -1,2 +1,2 @@
 # OysterX
-zmbag pl in astia de fura codu
+zmbag pl in astia de fura codu. bulangiolor

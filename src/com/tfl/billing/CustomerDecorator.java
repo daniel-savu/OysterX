@@ -12,7 +12,7 @@ public class CustomerDecorator extends Customer {
     Customer customer;
     Config config = new Config();
     private boolean travelledOnPeakTime;
-    List<Journey> journeys;
+    List<Journey> journeys ;
 
     public CustomerDecorator(Customer customer) {
         super(customer.fullName(), new OysterCard(customer.cardId().toString()));
@@ -49,6 +49,27 @@ public class CustomerDecorator extends Customer {
         customerTotal = applyCapIfNeeded(customerTotal, travelledOnPeakTime);
         return customerTotal;
     }
+
+    public BigDecimal getTotal(List<Journey> journeys) {
+        BigDecimal customerTotal = new BigDecimal("0");
+        BigDecimal priceOfJourney = null;
+
+        for (Journey journey : journeys) {
+            priceOfJourney = journey.getPrice();
+            travelledOnPeakTime = journey.isPeakTime();
+
+            try{
+                customerTotal = customerTotal.add(priceOfJourney);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        customerTotal = applyCapIfNeeded(customerTotal, travelledOnPeakTime);
+        return customerTotal;
+    }
+
+
 
     List<Journey> getJourneys() {
         List<JourneyEvent> customerJourneyEvents = collectCustomerJourneyEvents();

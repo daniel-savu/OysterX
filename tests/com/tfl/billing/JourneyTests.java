@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static com.tfl.billing.Utility.dateFormatterToLong;
@@ -156,4 +158,40 @@ public class JourneyTests {
         Assert.assertEquals(new BigDecimal("3.8"), journey.getPrice());
     }
 
+    @Test
+    public void noCustomerJourneyEventsReturnsAnEmptyJourneyList() {
+        ArrayList<JourneyEvent> journeyEvents = new ArrayList<JourneyEvent>();
+        List<Journey> journeys = Journey.transformJourneyEventsToJourneys(journeyEvents);
+        Assert.assertEquals(0,journeys.size());
+    }
+
+    @Test
+    public void noJourneyEndEventThrowsJourneyHasNoEndException() {
+        try {
+            ArrayList<JourneyEvent> journeyEvents = new ArrayList<JourneyEvent>();
+            JourneyStart journeyStart = new JourneyStart(UUID.randomUUID(),UUID.randomUUID());
+            //JourneyEnd journeyEnd = new JourneyEnd(UUID.randomUUID(),UUID.randomUUID());
+            journeyEvents.add(journeyStart);
+            //journeyEvents.add(journeyEnd);
+            Journey.transformJourneyEventsToJourneys(journeyEvents);
+            Assert.fail("JourneyHasNoEndException not thrown");
+        } catch(Exception e) {
+            Assert.assertTrue(e.getClass().getCanonicalName().equals("com.tfl.billing.JourneyHasNoEndException"));
+        }
+    }
+
+
+    @Test
+    public void oneJourneyStartAndOneJourneyEndDoesNotThrowException() {
+        try {
+            ArrayList<JourneyEvent> journeyEvents = new ArrayList<JourneyEvent>();
+            JourneyStart journeyStart = new JourneyStart(UUID.randomUUID(),UUID.randomUUID());
+            JourneyEnd journeyEnd = new JourneyEnd(UUID.randomUUID(),UUID.randomUUID());
+            journeyEvents.add(journeyStart);
+            journeyEvents.add(journeyEnd);
+            Journey.transformJourneyEventsToJourneys(journeyEvents);
+        } catch(Exception e) {
+            fail("JourneyHasNoEndException thrown");
+        }
+    }
 }

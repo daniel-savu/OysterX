@@ -29,7 +29,7 @@ public class JourneyTests {
 
 
     @Test
-    public void journeyStartStaionIdEqualsOriginId() throws InterruptedException {
+    public void journeyStartStationIdEqualsOriginId() throws InterruptedException {
         createTestJourneyWithStartTimeAndEndTime("07:30:00","07:45:00");
         Assert.assertEquals(journey.originId(), journeyStart.readerId());
     }

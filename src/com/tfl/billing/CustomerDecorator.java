@@ -12,6 +12,7 @@ public class CustomerDecorator extends Customer {
     Customer customer;
     Config config = new Config();
     private boolean travelledOnPeakTime;
+    List<Journey> journeys;
 
     public CustomerDecorator(Customer customer) {
         super(customer.fullName(), new OysterCard(customer.cardId().toString()));
@@ -25,27 +26,12 @@ public class CustomerDecorator extends Customer {
     }
 
     void makePayment () {
-        List<Journey> journeys = getJourneys();
-        BigDecimal customerTotal = getTotal(journeys);
-        manageTransaction(journeys, customerTotal);
+        BigDecimal customerTotal = getTotal();
+        manageTransaction(customerTotal);
     }
 
-    List<Journey> getJourneys() {
-        List<JourneyEvent> customerJourneyEvents = collectCustomerJourneyEvents();
-        return Journey.transformJourneyEventsToJourneys(customerJourneyEvents);
-    }
-
-    private List<JourneyEvent> collectCustomerJourneyEvents() {
-        List<JourneyEvent> customerJourneyEvents = new ArrayList<>();
-        for (JourneyEvent journeyEvent : TravelTracker.eventLog) {
-            if (journeyEvent.cardId().equals(customer.cardId())) {
-                customerJourneyEvents.add(journeyEvent);
-            }
-        }
-        return customerJourneyEvents;
-    }
-
-    private BigDecimal getTotal(List<Journey> journeys) {
+    public BigDecimal getTotal() {
+        journeys = getJourneys();
         BigDecimal customerTotal = new BigDecimal("0");
         BigDecimal priceOfJourney = null;
 
@@ -64,7 +50,22 @@ public class CustomerDecorator extends Customer {
         return customerTotal;
     }
 
-    private void manageTransaction (List<Journey> journeys, BigDecimal customerTotal) {
+    List<Journey> getJourneys() {
+        List<JourneyEvent> customerJourneyEvents = collectCustomerJourneyEvents();
+        return Journey.transformJourneyEventsToJourneys(customerJourneyEvents);
+    }
+
+    private List<JourneyEvent> collectCustomerJourneyEvents() {
+        List<JourneyEvent> customerJourneyEvents = new ArrayList<>();
+        for (JourneyEvent journeyEvent : TravelTracker.eventLog) {
+            if (journeyEvent.cardId().equals(customer.cardId())) {
+                customerJourneyEvents.add(journeyEvent);
+            }
+        }
+        return customerJourneyEvents;
+    }
+
+    private void manageTransaction (BigDecimal customerTotal) {
         PaymentsSystem.getInstance().charge(customer, journeys, Utility.roundToNearestPenny(customerTotal));
     }
 

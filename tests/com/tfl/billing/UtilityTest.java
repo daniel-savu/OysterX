@@ -37,9 +37,10 @@ public class UtilityTest {
 
     @Test
     public void dateTimeToFloatTime() {
-        Date date = new Date(dateFormatterToLong("13:00:00"));
-        Assert.assertEquals(13.0,Utility.dateTimeToFloatTime(date),0);
+        Date date = new Date(dateFormatterToLong("00:00:00"));
+        Assert.assertEquals(0.0,Utility.dateTimeToFloatTime(date),0);
     }
+
 
     @Test
     public void thirtyMinutesDateTimeToPointFiveInFloatTime() {

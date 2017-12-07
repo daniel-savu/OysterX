@@ -11,6 +11,10 @@ import java.util.GregorianCalendar;
 
 public class Utility {
 
+    private Utility() {
+        
+    }
+
     public static int getCurrentHour(Date time) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(time);

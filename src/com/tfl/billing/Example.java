@@ -21,10 +21,10 @@ public class Example {
         paddingtonReader.touch(myCard);
         //minutesPass(26);
         bakerStreetReader.touch(myCard);
-        //minutesPass(15);
-        bakerStreetReader.touch(myCard);
-        //minutesPass(10);
-        kingsCrossReader.touch(myCard);
+//        //minutesPass(15);
+//        bakerStreetReader.touch(myCard);
+//        //minutesPass(10);
+//        kingsCrossReader.touch(myCard);
 //        bakerStreetReader.touch(myCard);
 //        //minutesPass(10);
 //        kingsCrossReader.touch(myCard);

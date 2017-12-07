@@ -37,7 +37,7 @@ public class TravelTrackerTests {
             travelTracker.cardScanned(knownOysterCardID, readerOriginID);
 
         } catch(Exception e) {
-            fail("UnknownOysterCardException not thrown");
+            fail("UnknownOysterCardException thrown");
         }
     }
 

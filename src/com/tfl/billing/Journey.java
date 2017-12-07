@@ -17,6 +17,68 @@ public class Journey {
         this.end = end;
     }
 
+    public BigDecimal getPrice() {
+        BigDecimal journeyPrice;
+        if(this.isPeakTime()) {
+            journeyPrice = this.getShortOrLongPeakFare();
+        } else {
+            journeyPrice = this.getShortOrLongOffPeakFare();
+        }
+        return journeyPrice;
+    }
+
+    public boolean isPeakTime() {
+        ArrayList<Peak> peaks = config.getPeaks();
+        for (Peak peak : peaks) {
+            float journeyStartTime = Utility.dateTimeToFloatTime(this.startTime());
+            float journeyEndTime = Utility.dateTimeToFloatTime(this.endTime());
+            if (peak.contains(journeyStartTime) || peak.contains(journeyEndTime) || peak.isContainedInJourney(journeyStartTime,journeyEndTime)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private BigDecimal getShortOrLongPeakFare() {
+        if(this.isLong()) {
+            return config.getPeakLongJourneyPrice();
+        } else {
+            return config.getPeakShortJourneyPrice();
+        }
+    }
+
+    private BigDecimal getShortOrLongOffPeakFare() {
+        if(this.isLong()) {
+            return config.getOffPeakLongJourneyPrice();
+        } else {
+            return config.getOffPeakShortJourneyPrice();
+        }
+    }
+
+    public boolean isLong(){
+        return (this.durationSeconds() > config.getLongJourneyDurationInMinutes() * config.getSecondsInAMinute());
+    }
+
+    static List<Journey> transformJourneyEventsToJourneys(List<JourneyEvent> customerJourneyEvents)  throws JourneyHasNoEndException {
+        List<Journey> journeys = new ArrayList<>();
+        JourneyEvent start = null;
+
+        for (JourneyEvent event : customerJourneyEvents) {
+            if (event instanceof JourneyStart) {
+                start = event;
+            }
+            if (event instanceof JourneyEnd) {
+                journeys.add(new Journey(start, event));
+                start = null;
+            }
+        }
+
+        if (start != null) throw new JourneyHasNoEndException();
+
+        return journeys;
+    }
+
+
     public String formattedStartTime() {
         return String.format("%s", start.time());
     }
@@ -43,65 +105,6 @@ public class Journey {
 
     public int durationSeconds() {
         return (int) ((end.time() - start.time()) / config.getMillisecondsInASecond());
-    }
-
-    public BigDecimal getPrice() {
-        BigDecimal journeyPrice;
-        if(this.isPeakTime()) {
-            journeyPrice = this.getShortOrLongPeakFare();
-        } else {
-            journeyPrice = this.getShortOrLongOffPeakFare();
-        }
-        return journeyPrice;
-    }
-
-    private BigDecimal getShortOrLongPeakFare() {
-        if(this.isLong()) {
-            return config.getPeakLongJourneyPrice();
-        } else {
-            return config.getPeakShortJourneyPrice();
-        }
-    }
-
-    private BigDecimal getShortOrLongOffPeakFare() {
-        if(this.isLong()) {
-            return config.getOffPeakLongJourneyPrice();
-        } else {
-            return config.getOffPeakShortJourneyPrice();
-        }
-    }
-
-    public boolean isPeakTime() {
-        ArrayList<Peak> peaks = config.getPeaks();
-        for (Peak peak : peaks) {
-            float journeyStartTime = Utility.dateTimeToFloatTime(this.startTime());
-            float journeyEndTime = Utility.dateTimeToFloatTime(this.endTime());
-            if (peak.contains(journeyStartTime) || peak.contains(journeyEndTime) || peak.isContainedInJourney(journeyStartTime,journeyEndTime)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isLong(){
-        return (this.durationSeconds() > config.getLongJourneyDurationInMinutes() * config.getSecondsInAMinute());
-    }
-
-
-    static List<Journey> transformJourneyEventsToJourneys(List<JourneyEvent> customerJourneyEvents) {
-        List<Journey> journeys = new ArrayList<>();
-        JourneyEvent start = null;
-
-        for (JourneyEvent event : customerJourneyEvents) {
-            if (event instanceof JourneyStart) {
-                start = event;
-            }
-            if (event instanceof JourneyEnd) {
-                journeys.add(new Journey(start, event));
-                start = null;
-            }
-        }
-        return journeys;
     }
 
 }

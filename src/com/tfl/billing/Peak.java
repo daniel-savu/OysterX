@@ -12,22 +12,22 @@ public class Peak {
         this.endTime = Utility.stringTimeToFloatTime(endTime);
     }
 
-    boolean contains(float journeyTime) {
-        return (journeyTime >= startTime && journeyTime <= endTime);
-    }
-
     boolean contains(Date journeyTime) {
         float journeyStartTime = Utility.dateTimeToFloatTime(journeyTime);
-        return (journeyStartTime >= startTime && journeyStartTime <= endTime);
+        return contains(journeyStartTime);
     }
 
-    boolean isContainedInJourney(float journeyStartTime, float journeyEndTime) {
-        return (journeyStartTime <= startTime && journeyEndTime >= endTime);
+    boolean contains(float journeyTime) {
+        return (journeyTime >= startTime && journeyTime <= endTime);
     }
 
     boolean isContainedInJourney(Date start, Date end) {
         float journeyStartTime = Utility.dateTimeToFloatTime(start);
         float journeyEndTime = Utility.dateTimeToFloatTime(end);
+        return isContainedInJourney(journeyStartTime, journeyEndTime);
+    }
+
+    boolean isContainedInJourney(float journeyStartTime, float journeyEndTime) {
         return (journeyStartTime <= startTime && journeyEndTime >= endTime);
     }
 }

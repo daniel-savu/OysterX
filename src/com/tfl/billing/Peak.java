@@ -1,5 +1,7 @@
 package com.tfl.billing;
 
+import java.util.Date;
+
 public class Peak {
 
     private final float startTime;
@@ -14,7 +16,18 @@ public class Peak {
         return (journeyTime >= startTime && journeyTime <= endTime);
     }
 
+    boolean contains(Date journeyTime) {
+        float journeyStartTime = Utility.dateTimeToFloatTime(journeyTime);
+        return (journeyStartTime >= startTime && journeyStartTime <= endTime);
+    }
+
     boolean isContainedInJourney(float journeyStartTime, float journeyEndTime) {
+        return (journeyStartTime <= startTime && journeyEndTime >= endTime);
+    }
+
+    boolean isContainedInJourney(Date start, Date end) {
+        float journeyStartTime = Utility.dateTimeToFloatTime(start);
+        float journeyEndTime = Utility.dateTimeToFloatTime(end);
         return (journeyStartTime <= startTime && journeyEndTime >= endTime);
     }
 }

@@ -30,9 +30,7 @@ public class Journey {
     public boolean isPeakTime() {
         ArrayList<Peak> peaks = config.getPeaks();
         for (Peak peak : peaks) {
-            float journeyStartTime = Utility.dateTimeToFloatTime(this.startTime());
-            float journeyEndTime = Utility.dateTimeToFloatTime(this.endTime());
-            if (peak.contains(journeyStartTime) || peak.contains(journeyEndTime) || peak.isContainedInJourney(journeyStartTime,journeyEndTime)) {
+            if (peak.contains(this.startTime()) || peak.contains(this.endTime()) || peak.isContainedInJourney(this.startTime(), this.endTime())) {
                 return true;
             }
         }

@@ -19,6 +19,8 @@ public class Example {
         travelTracker.connect(paddingtonReader, bakerStreetReader, kingsCrossReader);
 
         paddingtonReader.touch(myCard);
+        paddingtonReader.touch(myCard);
+        paddingtonReader.touch(myCard);
         //minutesPass(26);
         bakerStreetReader.touch(myCard);
 
